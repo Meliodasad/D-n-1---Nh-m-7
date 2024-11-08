@@ -98,3 +98,5 @@ $customer_count = $pdo->query("SELECT COUNT(*) FROM customers")->fetchColumn();
     </div>
 </body>
 </html>
+
+svajbgvadgjadv
