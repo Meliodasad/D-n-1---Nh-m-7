@@ -1,3 +1,4 @@
+/* Existing styles */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -68,6 +69,69 @@ nav a:hover {
     background-color: #555;
 }
 
+/* New styles for "Đăng ký", "Đăng nhập", "Giỏ hàng" */
+.user-cart {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.user-cart a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.user-cart a:hover {
+    color: #aaa;
+}
+
+.user-cart .cart i {
+    margin-right: 5px;
+}
+
+.user-cart .signup,
+.user-cart .login {
+    background-color: #333;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.user-cart .signup:hover,
+.user-cart .login:hover {
+    background-color: #555;
+}
+
+.user-cart .cart {
+    position: relative;
+}
+
+.user-cart .cart i {
+    font-size: 18px;
+}
+
+.user-cart .cart:after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border-radius: 50%;
+    color: white;
+    font-size: 12px;
+    text-align: center;
+    line-height: 15px;
+    display: none; /* This will show the cart number when necessary */
+}
+
+/* Show notification in cart when items are present */
+.user-cart .cart.has-items:after {
+    display: block;
+}
 
 .footer {
     background-color: #333;
@@ -133,10 +197,6 @@ nav a:hover {
 }
 
 /*---------------------cart------------------------*/
-
-
-
-
 
 .cart-content-left {
     flex: 2;
