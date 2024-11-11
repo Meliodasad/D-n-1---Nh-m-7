@@ -403,3 +403,33 @@ h2 a:hover {
 .login-form .signup-link a:hover {
     color: #555;
 }
+
+/* Slide show container */
+.slide-show {
+    position: relative;
+    width: 100%;       /* Chiếm toàn bộ chiều rộng màn hình */
+    height: 500px;     /* Chiều cao slideshow thay đổi, giờ là 500px */
+    overflow: hidden;  /* Ẩn các ảnh ngoài vùng hiển thị */
+}
+
+/* Container chứa các ảnh */
+.slide-container {
+    position: absolute;
+    width: 100%;       /* Chiếm toàn bộ chiều rộng */
+    height: 100%;      /* Chiếm toàn bộ chiều cao */
+}
+
+/* Các ảnh trong slideshow */
+.slide {
+    width: 100%;        /* Mỗi ảnh chiếm toàn bộ chiều rộng */
+    height: 500px;      /* Chiều cao của ảnh thay đổi tương ứng với chiều cao slideshow */
+    object-fit: cover;  /* Giữ tỉ lệ ảnh đúng */
+    position: absolute; /* Tất cả ảnh chồng lên nhau */
+    opacity: 0;         /* Mặc định ẩn ảnh */
+    transition: opacity 1s ease; /* Hiệu ứng mờ dần */
+}
+
+/* Khi một ảnh được hiển thị */
+.slide-active {
+    opacity: 1;         /* Ảnh hiện tại có opacity = 1 */
+}
