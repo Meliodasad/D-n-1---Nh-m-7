@@ -1,8 +1,11 @@
-/* Existing styles */
+/*--------------------- Tổng quan -----------------------*/
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
+
+/*--------------------- Header -----------------------*/
 
 .header {
     background-color: #444;
@@ -133,6 +136,123 @@ nav a:hover {
     display: block;
 }
 
+/*--------------------- Đăng ký form -----------------------*/
+
+.dangky-section {
+    background-color: #f9f9f9;
+    padding: 40px 20px;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dangky-container {
+    background-color: #fff;
+    width: 100%;
+    max-width: 500px;  /* Điều chỉnh chiều rộng tối đa để không bị full màn hình */
+    padding: 30px;  /* Padding hợp lý để form không quá chật */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    margin: 0 auto;  /* Căn giữa form */
+}
+
+.dangky-container h2 {
+    font-size: 24px;  /* Giữ kích thước tiêu đề */
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;  /* Căn giữa tiêu đề */
+    display: flex;
+    justify-content: center;  /* Căn giữa nội dung trong thẻ h2 */
+    gap: 10px;  /* Khoảng cách giữa các liên kết */
+}
+
+.dangky-container h2 a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.dangky-container h2 a:hover {
+    color: #a4a4a4;
+}
+
+
+.signup-form .form-group {
+    margin-bottom: 20px;  /* Giảm khoảng cách giữa các trường */
+}
+
+.signup-form label {
+    display: block;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.signup-form input {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.signup-form input:focus {
+    border-color: #333;
+    outline: none;
+}
+
+.signup-form .btn-submit {
+    background-color: #333;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.signup-form .btn-submit:hover {
+    background-color: #555;
+}
+
+.signup-form .login-link {
+    margin-top: 15px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.signup-form .login-link a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-form .login-link a:hover {
+    color: #555;
+}
+
+/* Điều chỉnh các liên kết trong tiêu đề */
+h2 a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+h2 a:hover {
+    color: #a4a4a4;
+}
+
+/*--------------------- Footer -----------------------*/
+
 .footer {
     background-color: #333;
     color: #fff;
@@ -196,47 +316,90 @@ nav a:hover {
     line-height: 1.6;
 }
 
-/*---------------------cart------------------------*/
+/*--------------------- Đăng nhập form -----------------------*/
 
-.cart-content-left {
-    flex: 2;
-    padding-right: 12px;
+.login-section {
+    background-color: #f9f9f9;
+    padding: 40px 20px;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.cart-content-left table{
+
+.login-container {
+    background-color: #fff;
     width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.login-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #333;
     text-align: center;
 }
-.cart-content-left table th{
-    padding-bottom: 30px;
-    font-family: var(--main-text-font);
-    font-size: 12px;
-    text-transform: uppercase;
-    color: #333;
-    border-collapse: collapse;
-    border-bottom: 2px solid #ddd;
+
+.login-form .form-group {
+    margin-bottom: 20px;
 }
-.cart-content-left table p{
-    font-family: var(--main-text-font);
-    font-size: 12px;
-    color: #333;
-}
-.cart-content-left input{
-    width: 30px;
-}
-.cart-content-left table span{
+
+.login-form label {
     display: block;
-    width: 20px;
-    height: 20px;
-    border: 1px solid #ddd;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.login-form input:focus {
+    border-color: #333;
+    outline: none;
+}
+
+.login-form .btn-submit {
+    background-color: #333;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
-.cart-content-left table td{
-    padding: 20px 0;
-    border-bottom: 2px solid #ddd ;
+
+.login-form .btn-submit:hover {
+    background-color: #555;
 }
-.cart-content-left td:first-child img{
-    width: 200px;
+
+.login-form .signup-link {
+    margin-top: 20px;
+    font-size: 14px;
+    text-align: center;
 }
-.cart-content-left td:nth-child(2){
-    max-width: 130px;
+
+.login-form .signup-link a {
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.login-form .signup-link a:hover {
+    color: #555;
 }
