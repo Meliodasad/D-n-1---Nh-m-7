@@ -1,0 +1,75 @@
+/* Cấu trúc chung */
+.product-page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.main-content {
+    display: flex;
+    width: 100%;
+    padding: 0 20px;
+
+    color: #fff;
+    gap: 20px; /* Khoảng cách giữa sidebar và banner */
+}
+
+
+/* Sidebar (Danh mục sản phẩm, Nhà cung cấp, Lọc giá) */
+.product-sidebar {
+    width: 18%; /* Giảm xuống để banner lớn hơn */
+    background-color: #1f1f1f;
+    padding: 20px;
+    border-radius: 8px;
+    color: #fff;
+    position: sticky;
+    top: 0;
+}
+
+.product-sidebar .section {
+    margin-bottom: 20px;
+}
+
+.section-header {
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 0;
+    border-bottom: 1px solid #444;
+}
+
+.section-header .arrow {
+    transition: transform 0.3s;
+}
+
+.section-content {
+    display: none;
+    padding: 10px 0;
+}
+
+.section-content label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.section-content label input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* Banner */
+.banner {
+    width: 80%;
+    position: relative;
+    height: auto;
+    flex-grow: 1; 
+}
+
+.banner-image {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+     display: block;
+}
