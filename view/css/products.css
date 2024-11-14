@@ -1,75 +1,140 @@
-/* Cấu trúc chung */
+
 .product-page {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-.main-content {
-    display: flex;
-    width: 100%;
-    padding: 0 20px;
-
-    color: #fff;
-    gap: 20px; /* Khoảng cách giữa sidebar và banner */
-}
-
-
-/* Sidebar (Danh mục sản phẩm, Nhà cung cấp, Lọc giá) */
-.product-sidebar {
-    width: 18%; /* Giảm xuống để banner lớn hơn */
-    background-color: #1f1f1f;
     padding: 20px;
-    border-radius: 8px;
-    color: #fff;
-    position: sticky;
-    top: 0;
 }
 
-.product-sidebar .section {
+
+.top-row {
+    display: flex;
+    justify-content: space-between; 
+    gap: 20px; 
     margin-bottom: 20px;
 }
 
-.section-header {
-    font-size: 18px;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    padding: 10px 0;
-    border-bottom: 1px solid #444;
+
+.product-sidebar {
+    flex: 1.5; 
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
 }
 
-.section-header .arrow {
-    transition: transform 0.3s;
+.product-banner {
+    flex: 8.5; 
+
+    padding: 20px;
+    border-radius: 8px;
+
 }
 
-.section-content {
-    display: none;
-    padding: 10px 0;
+.product-banner img {
+    width: 100%;
+    border-radius: 8px;
+}
+.product-sidebar h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
 }
 
-.section-content label {
-    display: block;
+.product-sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.product-sidebar ul li {
     margin-bottom: 10px;
+}
+
+.product-sidebar ul li a {
+    color: #333;
+    text-decoration: none;
     font-size: 16px;
 }
 
-.section-content label input[type="checkbox"] {
-    margin-right: 10px;
+.product-sidebar ul li a:hover {
+    color: #d32f2f;
 }
 
-/* Banner */
-.banner {
-    width: 80%;
-    position: relative;
-    height: auto;
-    flex-grow: 1; 
+
+.product-list {
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.banner-image {
+.product-list h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.product-item {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.product-item img {
     width: 100%;
     border-radius: 8px;
-    object-fit: cover;
-     display: block;
+    margin-bottom: 10px;
+}
+
+.product-item h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.product-item .price {
+    color: #d32f2f;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.product-item button {
+    background-color: #333;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.product-item button:hover {
+    background-color: #555;
+}
+
+.product-item:hover {
+    transform: scale(1.05);
+}
+
+
+@media screen and (max-width: 768px) {
+    .top-row {
+        flex-direction: column; 
+    }
+
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .products {
+        grid-template-columns: 1fr;
+    }
 }
