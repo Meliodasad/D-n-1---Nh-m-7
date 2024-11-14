@@ -86,7 +86,9 @@
     transition: transform 0.3s;
 }
 
-.product img {
+.product-item img {
+    width: 250px;
+
     border-radius: 8px;
     width: 100%;
     height: auto;
