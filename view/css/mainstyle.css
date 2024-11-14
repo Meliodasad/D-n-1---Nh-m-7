@@ -1,11 +1,7 @@
-/*--------------------- Tổng quan -----------------------*/
-
 body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
-
-/*--------------------- Header -----------------------*/
 
 .header {
     background-color: #444;
@@ -72,7 +68,7 @@ nav a:hover {
     background-color: #555;
 }
 
-/* New styles for "Đăng ký", "Đăng nhập", "Giỏ hàng" */
+
 .user-cart {
     display: flex;
     gap: 20px;
@@ -128,15 +124,15 @@ nav a:hover {
     font-size: 12px;
     text-align: center;
     line-height: 15px;
-    display: none; /* This will show the cart number when necessary */
+    display: none;
 }
 
-/* Show notification in cart when items are present */
+
 .user-cart .cart.has-items:after {
     display: block;
 }
 
-/*--------------------- Đăng ký form -----------------------*/
+
 
 .dangky-section {
     background-color: #f9f9f9;
@@ -150,23 +146,23 @@ nav a:hover {
 .dangky-container {
     background-color: #fff;
     width: 100%;
-    max-width: 500px;  /* Điều chỉnh chiều rộng tối đa để không bị full màn hình */
-    padding: 30px;  /* Padding hợp lý để form không quá chật */
+    max-width: 500px;  
+    padding: 30px;  
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: left;
-    margin: 0 auto;  /* Căn giữa form */
+    margin: 0 auto;  
 }
 
 .dangky-container h2 {
-    font-size: 24px;  /* Giữ kích thước tiêu đề */
+    font-size: 24px; 
     margin-bottom: 20px;
     font-weight: bold;
     color: #333;
-    text-align: center;  /* Căn giữa tiêu đề */
+    text-align: center;  
     display: flex;
-    justify-content: center;  /* Căn giữa nội dung trong thẻ h2 */
-    gap: 10px;  /* Khoảng cách giữa các liên kết */
+    justify-content: center;  
+    gap: 10px; 
 }
 
 .dangky-container h2 a {
@@ -182,7 +178,7 @@ nav a:hover {
 
 
 .signup-form .form-group {
-    margin-bottom: 20px;  /* Giảm khoảng cách giữa các trường */
+    margin-bottom: 20px;  
 }
 
 .signup-form label {
@@ -239,7 +235,7 @@ nav a:hover {
     color: #555;
 }
 
-/* Điều chỉnh các liên kết trong tiêu đề */
+
 h2 a {
     text-decoration: none;
     color: #333;
@@ -251,7 +247,6 @@ h2 a:hover {
     color: #a4a4a4;
 }
 
-/*--------------------- Footer -----------------------*/
 
 .footer {
     background-color: #333;
@@ -316,7 +311,6 @@ h2 a:hover {
     line-height: 1.6;
 }
 
-/*--------------------- Đăng nhập form -----------------------*/
 
 .login-section {
     background-color: #f9f9f9;
@@ -404,7 +398,6 @@ h2 a:hover {
     color: #555;
 }
 
-/* css cho Slide show*/
 .slide-show {
     position: relative;
     width: 100%;    
@@ -438,7 +431,6 @@ h2 a:hover {
     background-color: #f5f5f5;
 }
 
-/* css cho sản phẩm nổi bật*/
 
 .highlighted-products {
     text-align: center;
@@ -506,7 +498,7 @@ h2 a:hover {
     transform: scale(1.05);
 }
 
-/* css cho nút xem dao*/
+
 .view-all-button {
     display: inline-block;
     padding: 12px 20px;
@@ -528,7 +520,7 @@ h2 a:hover {
     transform: scale(0.98); 
 }
 
-/* home banner css */
+
 .home-banner {
     display: flex;
     justify-content: center;
@@ -551,8 +543,6 @@ h2 a:hover {
 }
 
 
-
-/* css cho sale products */
 .sale-products {
     margin: 20px 0;
     text-align: center;
@@ -618,7 +608,7 @@ h2 a:hover {
     background-color: #555;
 }
 
-/*------------------Cart-------------------*/
+
 .cart-content{
     padding: 80px 100px ;
 }
