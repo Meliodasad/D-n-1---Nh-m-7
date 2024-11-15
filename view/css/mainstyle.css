@@ -747,8 +747,9 @@ h2 a:hover {
     height: 35px;
     cursor: pointer;
 }
-.cart-content-right-button button:first-child{
+.cart-content-right-button a button:first-child{
     background-color: #fff;
+    color: #000000;
     border: 1px solid #000000;
     margin-right: 20px;
 }
@@ -761,8 +762,8 @@ h2 a:hover {
     border: none;
 }
 .cart-content-right-button button:last-child:hover{
-    background-color: #ddd;
-    color: #000000;
+    background-color: #000000;
+    color: #ffffff;
 }
 .cart-content-right-dangnhap{
     margin-top: 20px;
@@ -771,4 +772,163 @@ h2 a:hover {
     font-family: var(--main-text-font);
     font-size: 14px;
     color: #333;
+}
+
+.payment-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; 
+}
+.payment{
+    padding: 100px 100px;
+}
+.payment-top-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.payment-top{
+    height: 2px;
+    width: 70%;
+    background-color: #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px 0 100px;
+}
+.payment-top-item{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+}
+.payment-top-item i{
+    color: #ddd;
+}
+.payment-top-payment{
+    border: 1px solid #0a70ff;
+}
+.payment-top-payment i{
+    color: #0a70ff;
+}
+.payment-content-left{
+    width: 60%;
+}
+.payment-content-right{
+    width: 40%;
+    border-left: 2px solid #ddd;
+    padding-left: 12px;
+}
+.payment-content-left p,label{
+    margin: 30px 0;
+    font-size: 14px;
+    font-family: var(--main-text-font);
+}
+.payment-content-right-button{
+    display: flex;
+    padding: 12px 0;
+    border-bottom: 1px dashed #ddd;
+}
+.payment-content-right-button input{
+    height: 30px;
+    width: 200px;
+    margin-right: 100px;
+    padding-left: 12px;
+}
+.payment-content-right-button button{
+    height: 30px;
+    width: 100px;
+    background-color: #313131;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.payment-content-right-button-mnv{
+    margin-top: 20px;
+}
+.payment-content-right-button-mnv select{
+    height: 30px;
+    width: 100%;
+    color: #757575;
+    padding-left: 12px;
+}
+.payment-content-right-payment{
+    margin-top: 50px;
+    align-items: center;
+    text-align: center;
+}
+.payment-content-right-payment button{
+    height: 35px;
+    padding: 0 20px;
+    font-size: 12px;
+    color: black;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid black;
+}
+.payment-content-right-payment button:hover{
+    background-color: #000000;
+    color: #fff;
+}
+
+/* Cấu trúc bảng */
+.payment-table {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+}
+
+.payment-table table {
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+.payment-table td {
+    padding: 10px;
+    vertical-align: middle;
+}
+
+.payment-table label {
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+.payment-table img {
+    display: block;
+    margin-left: 20px;
+}
+
+.payment-table input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* Style cho bảng khi có hình ảnh */
+.payment-table img {
+    max-width: 150px;
+    height: auto;
+}
+
+/* Border cho các bảng */
+.payment-table table tr td {
+    border-bottom: 1px solid #ddd;
+}
+
+.payment-table table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Bảng tiêu đề */
+.payment-content-left p {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+/* Cải thiện khoảng cách */
+.payment-content-left {
+    margin-bottom: 30px;
 }
