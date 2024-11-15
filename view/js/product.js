@@ -20,3 +20,18 @@ function loadMoreProducts() {
 
 // Gọi hàm ẩn sản phẩm ban đầu
 hideExtraProducts();
+
+// chi tiết product js
+
+document.querySelector('.quantity-btn.minus').addEventListener('click', () => {
+    const quantityInput = document.getElementById('quantity');
+    let currentValue = parseInt(quantityInput.value);
+    if (currentValue > 1) {
+        quantityInput.value = currentValue - 1;
+    }
+});
+
+document.querySelector('.quantity-btn.plus').addEventListener('click', () => {
+    const quantityInput = document.getElementById('quantity');
+    quantityInput.value = parseInt(quantityInput.value) + 1;
+});
