@@ -22,9 +22,10 @@
                 <a href="#">Liên hệ</a>
             </nav>
             <div class="search-bar">
-                <input type="text" placeholder="Tìm kiếm...">
-                <button><i class="fas fa-search"></i> Tìm</button>
+                <input type="text" id="search-input" placeholder="Tìm kiếm...">
+                <button id="search-button"><i class="fas fa-search"></i> Tìm</button>
             </div>
+            <div id="search-results" class="product-list"></div>
 
             <div class="user-cart">
                 <a href="dangnhap.html" class="login">Đăng nhập</a>
@@ -56,7 +57,7 @@
                 <div class="product-quantity">
                     <label for="quantity">Số lượng:</label>
                     <button class="quantity-btn minus">-</button>
-                    <input type="number" id="quantity" value="1" min="1">
+                    <input  id="quantity" value="1" min="1">
                     <button class="quantity-btn plus">+</button>
                 </div>
     
@@ -69,6 +70,44 @@
         </div>
     </section>
     
+<div class="sale-products">
+    <h2>Sản phẩm liên quan</h2>
+    <div class="product-grid">
+        <div class="product">
+            <img src="image/dao gyuto.jpg" alt="Product 1">
+            <h3>Dao KAISHUN GYUTO</h3>
+            <p class="sale-price">2,900,000₫</p>
+            <a href="cart.html" class="buy-now">Thêm vào giỏ hàng</a>
+        </div>
+        <div class="product">
+            <img src="image/dao deba.png" alt="Product 2">
+            <h3>Dao Nhật DEBA</h3>
+            <p class="sale-price">480,000₫</p>
+            <a href="cart.html" class="buy-now">Thêm vào giỏ hàng</a>
+        </div>
+        <div class="product">
+            <img src="image/dao nakiri.jpg" alt="Product 1">
+            <h3>Dao Nhật NAKIRI</h3>
+            <p class="sale-price">400,000₫</p>
+            <a href="cart.html" class="buy-now">Thêm vào giỏ hàng</a>
+        </div>
+        <div class="product">
+            <img src="image/dao paring.webp" alt="Product 1">
+            <h3>Dao Nhật PARING</h3>
+            <p class="sale-price">400,000₫</p>
+            <a href="cart.html" class="buy-now">Thêm vào giỏ hàng</a>
+        </div>
+        <div class="product">
+            <img src="image/dao santoku.webp" alt="Product 1">
+            <h3>Dao Nhật SANTOKU</h3>
+            <p class="sale-price">400,000₫</p>
+            <a href="cart.html" class="buy-now">Thêm vào giỏ hàng</a>
+        </div>  
+    </div>
+    <a href="product.html" class="view-all-button">
+        Xem tất cả
+    </a>
+</div>
 </section>
     
     <section class="footer">

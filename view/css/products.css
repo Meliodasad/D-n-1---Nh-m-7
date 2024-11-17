@@ -217,36 +217,63 @@
 .product-price span {
     font-weight: bold;
 }
-
 .product-quantity {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    gap: 10px;
+    margin: 15px 0;
 }
 
 .product-quantity label {
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
     margin-right: 10px;
 }
 
-.quantity-btn {
-    padding: 5px 10px;
-    border: 1px solid #ddd;
-    background: #fff;
+.product-quantity button {
+    width: 40px;
+    height: 40px;
+    background-color: #f8f9fa;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    border: 1px solid #ccc;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.quantity-btn:hover {
-    background: #ddd;
+.product-quantity button:hover {
+    background-color: #e9ecef;
+    color: #000;
 }
 
-#quantity {
-    width: 50px;
+.product-quantity input {
+    width: 60px;
+    height: 40px;
     text-align: center;
     font-size: 16px;
-    margin: 0 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    appearance: textfield;
 }
+
+.product-quantity input:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+.product-quantity input::-webkit-outer-spin-button,
+.product-quantity input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 
 .product-actions {
     display: flex;
@@ -274,3 +301,68 @@
 .btn:hover {
     opacity: 0.9;
 }
+
+
+/* 2 */
+
+
+.sale-products {
+    margin: 20px 0;
+    text-align: center;
+    background-color: #f5f5f5;
+    padding: 10px;
+}
+
+.sale-products h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.sale-products .product-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    flex-wrap: nowrap; 
+    overflow-x: auto;
+}
+
+.sale-products .product {
+    background-color: #f5f5f5;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 225px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.sale-products .product img {
+    border-radius: 8px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+
+.sale-products .sale-price {
+    color: #d32f2f;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.sale-products .buy-now {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.sale-products .buy-now:hover {
+    background-color: #555;
+}
+
