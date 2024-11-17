@@ -74,3 +74,16 @@ header{
 
 
 }
+/* ..............category list.............. */
+.admin-content-right-category-list table{
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+
+}
+.admin-content-right-category-list table tr th,td{
+    border: 1px solid black;
+}
+table{
+    border-collapse: collapse;
+}
