@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/mainstyle.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <header class="header">
@@ -21,9 +20,10 @@
                 <a href="#">Liên hệ</a>
             </nav>
             <div class="search-bar">
-                <input type="text" placeholder="Tìm kiếm...">
-                <button><i class="fas fa-search"></i> Tìm</button>
+                <input type="text" id="search-input" placeholder="Tìm kiếm...">
+                <button id="search-button"><i class="fas fa-search"></i> Tìm</button>
             </div>
+            <div id="search-results" class="product-list"></div>
 
             <div class="user-cart">
                 <a href="dangnhap.html" class="login">Đăng nhập</a>
