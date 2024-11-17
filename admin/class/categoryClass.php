@@ -1,7 +1,19 @@
+<?php
+include "database.php";
+?>
+<?php
+class category {
+    private $db;
 
 
-
-<form method="POST" action="categoryadd.php">
-    <input type="text" name="category_name" required />
-    <input type="submit" value="Add Category" />
-</form>
+    public function __construct()
+    {
+        $this -> db =new Database();
+    }
+    public function insert_category($category_name){
+        $query = "INSERT INTO category(category_name) VALUE ('$category_name')";
+        $result = $this -> db ->insert($query);
+        return $result; 
+    }
+}
+?>

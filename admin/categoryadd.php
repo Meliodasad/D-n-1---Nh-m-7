@@ -1,14 +1,14 @@
 <?php
-include 'database.php';
-include 'class/categoryClass.php';
+include "header.php";
+include "slider.php";
+include "class/categoryClass.php";
+?>
 
-$category = new Category();
-$result = $category->insert_category('Dao Nhật');
-
-if ($result) {
-    echo "Thêm danh mục thành công!";
-} else {
-    echo "Lỗi khi thêm danh mục.";
+<?php
+$category = new category;
+if($_SERVER['REQUEST_METHOD']=== 'POST'){
+    $category_name = $_POST['category_name'];
+    $insert_category = $category -> insert_category($category_name);
 }
 ?>
 
