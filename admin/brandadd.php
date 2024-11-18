@@ -25,14 +25,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <h1>Thêm loại sản phẩm</h1>
                 <form action="" method="POST">
                     <select name="cartegory_id"id="">
-                        <option value="0">Chon danh muc</option>
+                        <option value="#">Chon danh muc</option>
                     <?php
                 $show_category = $brand->show_category();
                 if ($show_category) {while ($rusult = $show_category->fetch_assoc()) {
                     
                 
                     ?>
-                        <option value="<?php echo $rusult['cartegory'] ?>"><?php echo $rusult['cartegory_name']?></option>
+                        <option value="<?php echo $rusult['cartegory_id'] ?>"><?php echo $rusult['cartegory_name']?></option>
                         <?php
                         }}
                         ?>
