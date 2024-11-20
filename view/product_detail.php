@@ -11,11 +11,11 @@
     <header class="header">
         <div class="header-container">
             <div class="logo">
-                <a href="index.html"><img src="image/logo.png" alt="Logo" width="50" height="50"></a>
+                <a href="index.php"><img src="image/logo.png" alt="Logo" width="50" height="50"></a>
             </div>
             <nav>
-                <a href="index.html">Trang chủ</a>
-                <a href="product.html">Sản phẩm</a>
+                <a href="index.php">Trang chủ</a>
+                <a href="product.php">Sản phẩm</a>
                 <a href="#">Giới thiệu</a>
                 <a href="#">Tư Vấn</a>
                 <a href="#">Liên hệ</a>
@@ -103,7 +103,7 @@
             <a href="cart.html" class="buy-now">Thêm vào giỏ hàng</a>
         </div>  
     </div>
-    <a href="product.html" class="view-all-button">
+    <a href="product.php" class="view-all-button">
         Xem tất cả
     </a>
 </div>
