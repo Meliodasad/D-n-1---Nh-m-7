@@ -2,7 +2,7 @@
 include_once 'database.php';  
 include_once 'class/categoryClass.php';
 include 'slider.php';
-include "header.php";  
+include_once "header.php";  
 
 $category = new Category();
 $show_category = $category->show_category();

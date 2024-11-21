@@ -85,3 +85,57 @@ header h1 {
     color: #bbb; /* Màu chữ sáng hơn một chút */
     font-style: italic;
 }
+
+
+
+.admin-content {
+    display: flex;
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    padding: 20px;
+}
+
+.admin-content-left {
+    width: 250px;
+    background-color: #343a40;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.admin-content-left ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.admin-content-left ul li {
+    margin-bottom: 10px;
+}
+
+.admin-content-left ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.admin-content-left ul li a:hover {
+    background-color: #495057;
+}
+
+.admin-content-left ul li ul {
+    margin-top: 5px;
+    padding-left: 15px;
+}
+
+.admin-content-left ul li ul li a {
+    font-size: 14px;
+    background-color: #495057;
+}
+
+.admin-content-left ul li ul li a:hover {
+    background-color: #6c757d;
+}
