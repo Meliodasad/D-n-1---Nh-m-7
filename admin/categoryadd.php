@@ -1,6 +1,6 @@
 <?php
-include "header.php";
-include "slider.php";
+include "header.html";
+include "slider.html";
 include "class/categoryClass.php";
 ?>
 

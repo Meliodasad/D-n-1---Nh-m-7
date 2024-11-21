@@ -1,8 +1,8 @@
 <?php 
 include_once 'database.php';  
 include_once 'class/categoryClass.php';
-include 'slider.php';
-include_once "header.php";  
+include_once "header.html";  
+include 'slider.html';
 
 $category = new Category();
 $show_category = $category->show_category();
