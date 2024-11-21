@@ -1,6 +1,6 @@
 <?php
-include 'header.php';
-include 'slider.php';
+include 'header.html';
+include 'slider.html';
 include 'class/brandClass.php';
 ?>
 
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     
                 
                     ?>
-                        <option value="<?php echo $rusult['cartegory_id'] ?>"><?php echo $rusult['cartegory_name']?></option>
+                        <option value="<?php echo $rusult['category_id'] ?>"><?php echo $rusult['category_name']?></option>
                         <?php
                         }}
                         ?>

@@ -41,7 +41,7 @@ if ($result) {
                 <form action="" method="POST">
                     <input name="category_name" type="text" placeholder="Nhập tên danh mục" 
                     value="<?php echo $result['category_name']; ?>">
-                    <button type="sumit">Sửa</button>
+                    <button type="submit">Sửa</button>
                 </form>
             </div>
 
