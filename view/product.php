@@ -1,12 +1,9 @@
 <?php
-<<<<<<< HEAD
 require 'config.php'; // Kết nối đến cơ sở dữ liệu
 include 'header.php';
 
-// Lấy sản phẩm nổi bật
-=======
+
 require 'config.php'; 
->>>>>>> fd2f57db4c20fa57b734a8268c9f14ad282acefe
 $sql_highlighted = "SELECT * FROM tbl_product WHERE is_highlighted = 1";
 $highlighted_products = $conn->query($sql_highlighted)->fetchAll(PDO::FETCH_ASSOC);
 
@@ -25,8 +22,6 @@ $sale_products = $conn->query($sql_on_sale)->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="css/products.css">
 </head>
 <body>
-<<<<<<< HEAD
-=======
     <header class="header">
         <div class="header-container">
             <div class="logo">
@@ -59,7 +54,6 @@ $sale_products = $conn->query($sql_on_sale)->fetchAll(PDO::FETCH_ASSOC);
             </div>
         </div>
     </header>
->>>>>>> fd2f57db4c20fa57b734a8268c9f14ad282acefe
 
 
 <div class="product-page">
