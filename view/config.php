@@ -3,12 +3,15 @@
 $host = 'localhost';
 $dbname = 'web_duan1';
 $username = 'root';
-$password = 'khaikhai';
+$password = '052005';
 
 try {
-    $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // Tạo kết nối PDO
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+
+    // Thiết lập chế độ lỗi PDO
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
-    die("Kết nối database thất bại: " . $e->getMessage());
+    die("Lỗi kết nối cơ sở dữ liệu: " . $e->getMessage());
 }
 ?>
