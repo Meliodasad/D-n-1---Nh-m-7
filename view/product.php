@@ -1,11 +1,9 @@
 <?php
-require 'config.php'; // Kết nối đến cơ sở dữ liệu
-
-// Lấy sản phẩm nổi bật
+require 'config.php'; 
 $sql_highlighted = "SELECT * FROM tbl_product WHERE is_highlighted = 1";
 $highlighted_products = $conn->query($sql_highlighted)->fetchAll(PDO::FETCH_ASSOC);
 
-// Lấy sản phẩm giảm giá
+
 $sql_on_sale = "SELECT * FROM tbl_product WHERE is_on_sale = 1";
 $sale_products = $conn->query($sql_on_sale)->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -33,10 +31,14 @@ $sale_products = $conn->query($sql_on_sale)->fetchAll(PDO::FETCH_ASSOC);
                 <a href="#">Liên hệ</a>
             </nav>
             <div class="search-bar">
-                <input type="text" id="search-input" placeholder="Tìm kiếm...">
-                <button id="search-button"><i class="fas fa-search"></i> Tìm</button>
-            </div>
-            <div id="search-results" class="product-list"></div>
+    <form method="GET" action="search.php">
+        <input type="text" id="search-input" name="query" placeholder="Tìm kiếm...">
+        <button type="submit" id="search-button"><i class="fas fa-search"></i> Tìm</button>
+    </form>
+</div>
+<div id="search-results" class="product-list"></div>
+
+
             
 
             <div class="user-cart">
