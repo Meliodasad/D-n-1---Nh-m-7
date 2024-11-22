@@ -27,8 +27,8 @@
             <div id="search-results" class="product-list"></div>
 
             <div class="user-cart">
-                <a href="dangnhap.html" class="login">Đăng nhập</a>
-                <a href="dangky.html" class="signup">Đăng ký</a>
+                <a href="dangnhap.php" class="login">Đăng nhập</a>
+                <a href="dangky.php" class="signup">Đăng ký</a>
                 <a href="cart.html" class="cart">
                     <i class="fas fa-shopping-cart"></i> Giỏ hàng
                 </a>

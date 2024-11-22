@@ -1,5 +1,6 @@
 <?php
 require 'config.php'; // Kết nối đến cơ sở dữ liệu
+include 'header.php';
 
 // Lấy sản phẩm nổi bật
 $sql_highlighted = "SELECT * FROM tbl_product WHERE is_highlighted = 1";
@@ -20,34 +21,6 @@ $sale_products = $conn->query($sql_on_sale)->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="css/products.css">
 </head>
 <body>
-    <header class="header">
-        <div class="header-container">
-            <div class="logo">
-                <a href="index.php"><img src="image/logo.png" alt="Logo" width="50" height="50"></a>
-            </div>
-            <nav>
-                <a href="index.php">Trang chủ</a>
-                <a href="product.php">Sản phẩm</a>
-                <a href="#">Giới thiệu</a>
-                <a href="#">Tư Vấn</a>
-                <a href="#">Liên hệ</a>
-            </nav>
-            <div class="search-bar">
-                <input type="text" id="search-input" placeholder="Tìm kiếm...">
-                <button id="search-button"><i class="fas fa-search"></i> Tìm</button>
-            </div>
-            <div id="search-results" class="product-list"></div>
-            
-
-            <div class="user-cart">
-                <a href="dangnhap.html" class="login">Đăng nhập</a>
-                <a href="dangky.html" class="signup">Đăng ký</a>
-                <a href="cart.html" class="cart">
-                    <i class="fas fa-shopping-cart"></i> Giỏ hàng
-                </a>
-            </div>
-        </div>
-    </header>
 
 
 <div class="product-page">

@@ -35,7 +35,7 @@
             </li>
         </ul>
         </div>
-
+<center><h1 style="color: black;">CHÀO MỪNG ĐẾN VỚI TRANG QUẢN TRỊ DAO NHẬT</h1></center>
 
     </section>
 </body>
