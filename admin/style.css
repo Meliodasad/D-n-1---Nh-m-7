@@ -35,7 +35,7 @@ header h1 {
 
 /* Style cho bảng danh mục */
 .admin-content-right-category-list table {
-    width: 70%; /* Giới hạn chiều rộng của bảng */
+    width: 100%; /* Giới hạn chiều rộng của bảng */
     margin: 0 auto; /* Căn giữa bảng */
     border-collapse: collapse;
     margin-top: 20px;
@@ -139,3 +139,35 @@ header h1 {
 .admin-content-left ul li ul li a:hover {
     background-color: #6c757d;
 }
+
+.admin-content-right-category-add input {
+    width: 100%; /* Chiếm toàn chiều rộng */
+    padding: 10px; /* Khoảng cách trong ô */
+    margin-bottom: 15px; /* Khoảng cách dưới */
+    border: 1px solid #ccc; /* Viền màu xám nhạt */
+    border-radius: 5px; /* Bo góc */
+    font-size: 16px; /* Kích thước chữ */
+    box-sizing: border-box; /* Không tràn khung */
+}
+
+.admin-content-right-category-add input:focus {
+    border-color: #4CAF50; /* Viền xanh khi focus */
+    outline: none; /* Bỏ viền mặc định */
+    box-shadow: 0 0 5px #4CAF50; /* Hiệu ứng ánh sáng */
+}
+
+.admin-content-right-category-add button {
+    background-color: #4CAF50; /* Màu xanh lá nổi bật */
+    color: white; /* Màu chữ trắng */
+    padding: 10px 20px; /* Khoảng cách trong nút */
+    border: none; /* Bỏ viền */
+    border-radius: 5px; /* Bo tròn góc */
+    cursor: pointer; /* Con trỏ thành tay */
+    font-size: 16px; /* Kích thước chữ */
+    transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu */
+}
+
+.admin-content-right-category-add button:hover {
+    background-color: #45a049; /* Màu khi hover */
+}
+
