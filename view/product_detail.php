@@ -21,10 +21,14 @@
                 <a href="#">Liên hệ</a>
             </nav>
             <div class="search-bar">
-                <input type="text" id="search-input" placeholder="Tìm kiếm...">
-                <button id="search-button"><i class="fas fa-search"></i> Tìm</button>
-            </div>
-            <div id="search-results" class="product-list"></div>
+    <form method="GET" action="search.php">
+        <input type="text" id="search-input" name="query" placeholder="Tìm kiếm...">
+        <button type="submit" id="search-button"><i class="fas fa-search"></i> Tìm</button>
+    </form>
+</div>
+<div id="search-results" class="product-list"></div>
+
+
 
             <div class="user-cart">
                 <a href="dangnhap.php" class="login">Đăng nhập</a>
@@ -39,12 +43,12 @@
 <section class="main-product">
     <section class="product-detail">
         <div class="product-container">
-            <!-- Product Image -->
+
             <div class="product-image">
                 <img src="image/dao dai.png" alt="Sản phẩm dao" width="400" height="400">
             </div>
-    
-            <!-- Product Details -->
+            
+            
             <div class="product-info">
                 <h1>Dao Nhật Bản Cao Cấp</h1>
                 <p class="product-description">
@@ -52,7 +56,7 @@
                 </p>
                 <p class="product-price">Giá: <span>1.200.000₫</span></p>
     
-                <!-- Quantity Selection -->
+               
                 <div class="product-quantity">
                     <label for="quantity">Số lượng:</label>
                     <button class="quantity-btn minus">-</button>
@@ -60,7 +64,7 @@
                     <button class="quantity-btn plus">+</button>
                 </div>
     
-                <!-- Action Buttons -->
+                
                 <div class="product-actions">
                     <a href="cart.html"><button class="btn add-to-cart"><i class="fas fa-cart-plus"></i> Thêm vào giỏ</button></a>
                     <button class="btn buy-now"><i class="fas fa-bolt"></i> Mua ngay</button>

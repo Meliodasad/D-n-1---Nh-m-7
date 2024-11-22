@@ -1,12 +1,16 @@
 <?php
+<<<<<<< HEAD
 require 'config.php'; // Kết nối đến cơ sở dữ liệu
 include 'header.php';
 
 // Lấy sản phẩm nổi bật
+=======
+require 'config.php'; 
+>>>>>>> fd2f57db4c20fa57b734a8268c9f14ad282acefe
 $sql_highlighted = "SELECT * FROM tbl_product WHERE is_highlighted = 1";
 $highlighted_products = $conn->query($sql_highlighted)->fetchAll(PDO::FETCH_ASSOC);
 
-// Lấy sản phẩm giảm giá
+
 $sql_on_sale = "SELECT * FROM tbl_product WHERE is_on_sale = 1";
 $sale_products = $conn->query($sql_on_sale)->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -21,6 +25,41 @@ $sale_products = $conn->query($sql_on_sale)->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="css/products.css">
 </head>
 <body>
+<<<<<<< HEAD
+=======
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.php"><img src="image/logo.png" alt="Logo" width="50" height="50"></a>
+            </div>
+            <nav>
+                <a href="index.php">Trang chủ</a>
+                <a href="product.php">Sản phẩm</a>
+                <a href="#">Giới thiệu</a>
+                <a href="#">Tư Vấn</a>
+                <a href="#">Liên hệ</a>
+            </nav>
+            <div class="search-bar">
+    <form method="GET" action="search.php">
+        <input type="text" id="search-input" name="query" placeholder="Tìm kiếm...">
+        <button type="submit" id="search-button"><i class="fas fa-search"></i> Tìm</button>
+    </form>
+</div>
+<div id="search-results" class="product-list"></div>
+
+
+            
+
+            <div class="user-cart">
+                <a href="dangnhap.html" class="login">Đăng nhập</a>
+                <a href="dangky.html" class="signup">Đăng ký</a>
+                <a href="cart.html" class="cart">
+                    <i class="fas fa-shopping-cart"></i> Giỏ hàng
+                </a>
+            </div>
+        </div>
+    </header>
+>>>>>>> fd2f57db4c20fa57b734a8268c9f14ad282acefe
 
 
 <div class="product-page">

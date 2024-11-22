@@ -6,11 +6,15 @@ include 'header.php';
 $sql_highlighted = "SELECT * FROM tbl_product WHERE is_highlighted = 1";
 $highlighted_products = $conn->query($sql_highlighted)->fetchAll(PDO::FETCH_ASSOC);
 
+
+
+$sql_highlighted = "SELECT * FROM tbl_product WHERE is_highlighted = 1 LIMIT 8";
+$highlighted_products = $conn->query($sql_highlighted)->fetchAll(PDO::FETCH_ASSOC);
+
+
 $sql_on_sale = "SELECT * FROM tbl_product WHERE is_on_sale = 1";
 $sale_products = $conn->query($sql_on_sale)->fetchAll(PDO::FETCH_ASSOC);
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +24,7 @@ $sale_products = $conn->query($sql_on_sale)->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="css/mainstyle.css">
 </head>
 <body>
-    
+
 
 <div class="slide-show">
     <div class="slide-container">
@@ -111,9 +115,3 @@ $sale_products = $conn->query($sql_on_sale)->fetchAll(PDO::FETCH_ASSOC);
 
 </body>
 </html>
-
-
-
-
-
-
