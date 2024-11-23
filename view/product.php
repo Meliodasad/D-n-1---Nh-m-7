@@ -22,38 +22,6 @@ $sale_products = $conn->query($sql_on_sale)->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="css/products.css">
 </head>
 <body>
-    <header class="header">
-        <div class="header-container">
-            <div class="logo">
-                <a href="index.php"><img src="image/logo.png" alt="Logo" width="50" height="50"></a>
-            </div>
-            <nav>
-                <a href="index.php">Trang chủ</a>
-                <a href="product.php">Sản phẩm</a>
-                <a href="#">Giới thiệu</a>
-                <a href="#">Tư Vấn</a>
-                <a href="#">Liên hệ</a>
-            </nav>
-            <div class="search-bar">
-    <form method="GET" action="search.php">
-        <input type="text" id="search-input" name="query" placeholder="Tìm kiếm...">
-        <button type="submit" id="search-button"><i class="fas fa-search"></i> Tìm</button>
-    </form>
-</div>
-<div id="search-results" class="product-list"></div>
-
-
-            
-
-            <div class="user-cart">
-                <a href="dangnhap.html" class="login">Đăng nhập</a>
-                <a href="dangky.html" class="signup">Đăng ký</a>
-                <a href="cart.html" class="cart">
-                    <i class="fas fa-shopping-cart"></i> Giỏ hàng
-                </a>
-            </div>
-        </div>
-    </header>
 
 
 <div class="product-page">
@@ -106,31 +74,7 @@ $sale_products = $conn->query($sql_on_sale)->fetchAll(PDO::FETCH_ASSOC);
 
 
     
-    <section class="footer">
-        <div class="footer-container">
-            <p>Nhận Tư Vấn</p>
-            <div class="input-email">
-                <input type="text" placeholder="Nhập Email của bạn...">
-                <i class="fas fa-arrow-left"></i>
-            </div>
-            <div>
-                <li><a href=""><img src="image/logo.png" alt="" width="50" height="50"></a></li>
-                <li><a href="">Liên hệ</a></li>
-                <li><a href="">Giới thiệu</a></li>
-                <li><a href="">Tư Vấn</a></li>
-                <li><a href=""><i class="fab fa-facebook-f"></i></a><a href=""><i class="fab fa-youtube"></i></a></li>
-            </div>
-            <div class="footer-text">
-                Stim Store tự hào là thương hiệu chuyên cung cấp các loại dao Nhật Bản cao cấp <br>
-            Mang lại chất lượng vượt trội và độ bền bỉ, đúng chuẩn tinh hoa ẩm thực Nhật Bản. Được kiểm duyệt và trải nghiệm bởi đầu bếp nổi tiếng Hoshi Đào. <br>
-            FPT Polytechnic, đường Trịnh Văn Bô, phường Phương Canh, quận Nam Từ Liêm, Hà Nội. <br>
-            Hotline: 0345981925
-            </div>
-            <div>
-                Copyright © 2024 Stim Store.
-            </div>
-        </div>
-    </section>
+<?php include 'footer.php'; ?>
 
 
     <script src="js/product.js"></script>

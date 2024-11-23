@@ -1,52 +1,79 @@
+<?php
+require 'config.php'; 
+include 'header.php';
+
+// Xử lý thêm sản phẩm vào giỏ hàng
+if (isset($_GET['add_to_cart'])) {
+    $product_id = $_GET['add_to_cart'];
+    $sql_product = "SELECT * FROM tbl_product WHERE product_id = :product_id";
+    $stmt = $conn->prepare($sql_product);
+    $stmt->execute(['product_id' => $product_id]);
+
+    if ($stmt->rowCount() > 0) {
+        $product = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // Kiểm tra sản phẩm đã có trong giỏ hàng chưa
+        $sql_cart = "SELECT * FROM tbl_cart WHERE cart_name = :cart_name";
+        $stmt_cart = $conn->prepare($sql_cart);
+        $stmt_cart->execute(['cart_name' => $product['product_name']]);
+
+        if ($stmt_cart->rowCount() > 0) {
+            // Tăng số lượng nếu đã có
+            $update_cart = "UPDATE tbl_cart SET cart_quantity = cart_quantity + 1 WHERE cart_name = :cart_name";
+            $stmt_update = $conn->prepare($update_cart);
+            $stmt_update->execute(['cart_name' => $product['product_name']]);
+        } else {
+            // Thêm sản phẩm mới
+            $insert_cart = "INSERT INTO tbl_cart (cart_img, cart_name, cart_quantity, cart_price) 
+                            VALUES (:cart_img, :cart_name, 1, :cart_price)";
+            $stmt_insert = $conn->prepare($insert_cart);
+            $stmt_insert->execute([
+                'cart_img' => $product['product_img'],
+                'cart_name' => $product['product_name'],
+                'cart_price' => $product['product_price']
+            ]);
+        }
+    }
+}
+
+// Xử lý cập nhật số lượng
+if (isset($_GET['update_quantity'])) {
+    $cart_id = $_GET['update_quantity'];
+    $quantity = max(1, intval($_GET['quantity']));
+    $sql_update_quantity = "UPDATE tbl_cart SET cart_quantity = :quantity WHERE cart_id = :cart_id";
+    $stmt_update_quantity = $conn->prepare($sql_update_quantity);
+    $stmt_update_quantity->execute(['quantity' => $quantity, 'cart_id' => $cart_id]);
+    header("Location: cart.php");
+    exit;
+}
+
+// Xử lý xóa sản phẩm
+if (isset($_GET['remove'])) {
+    $cart_id = $_GET['remove'];
+    $sql_remove = "DELETE FROM tbl_cart WHERE cart_id = :cart_id";
+    $stmt_remove = $conn->prepare($sql_remove);
+    $stmt_remove->execute(['cart_id' => $cart_id]);
+    header("Location: cart.php");
+    exit;
+}
+
+// Lấy danh sách sản phẩm trong giỏ hàng
+$sql_cart_items = "SELECT * FROM tbl_cart";
+$stmt_cart_items = $conn->prepare($sql_cart_items);
+$stmt_cart_items->execute();
+$cart_items = $stmt_cart_items->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Giỏ hàng</title>
     <link rel="stylesheet" href="css/mainstyle.css">
 </head>
 <body>
-    <header class="header">
-        <div class="header-container">
-            <div class="logo">
-                <a href="index.html"><img src="image/logo.png" alt="Logo" width="50" height="50"></a>
-            </div>
-            <nav>
-                <a href="index.html">Trang chủ</a>
-                <a href="product.html">Sản phẩm</a>
-                <a href="#">Giới thiệu</a>
-                <a href="#">Tư Vấn</a>
-                <a href="#">Liên hệ</a>
-            </nav>
-            <div class="search-bar">
-                <input type="text" id="search-input" placeholder="Tìm kiếm...">
-                <button id="search-button"><i class="fas fa-search"></i> Tìm</button>
-            </div>
-            <div id="search-results" class="product-list"></div>
-
-            <div class="user-cart">
-                <a href="dangnhap.html" class="login">Đăng nhập</a>
-                <a href="dangky.html" class="signup">Đăng ký</a>
-                <a href="cart.html" class="cart">
-                    <i class="fas fa-shopping-cart"></i> Giỏ hàng
-                </a>
-            </div>
-        </div>
-    </header>
     <section class="cart">
-        <div class="container">
-            <div class="cart-top-wrap">
-                <div class="cart-top">
-                    <div class="cart-top-cart cart-top-item">
-                        <i class="fas fa-shopping-cart "></i>
-                    </div>
-                    <div class="cart-top-payment cart-top-item">
-                        <i class="fas fa-money-check-alt"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="container">
             <div class="cart-content row">
                 <div class="cart-content-left">
@@ -58,27 +85,18 @@
                             <th>Thành tiền</th>
                             <th>Xoá</th>
                         </tr>
+                        <?php foreach ($cart_items as $cart): ?>
                         <tr>
-                            <td><img src="image/product1.png" alt=""></td>
-                            <td><p>DAO NHẬT BUNKA</p></td>
-                            <td><input type="number" value="1" min="1"></td>
-                            <td><p>2.500.000 <sup>đ</sup></p></td>
-                            <td><span>X</span></td>
+                            <td><img src="image/<?php echo $cart['cart_img']; ?>" alt=""></td>
+                            <td><p><?php echo $cart['cart_name']; ?></p></td>
+                            <td>
+                                <input type="number" value="<?php echo $cart['cart_quantity']; ?>" min="1" 
+                                       onchange="updateQuantity(<?php echo $cart['cart_id']; ?>, this.value)">
+                            </td>
+                            <td><p><?php echo number_format($cart['cart_price'] * $cart['cart_quantity']); ?> <sup>đ</sup></p></td>
+                            <td><a href="cart.php?remove=<?php echo $cart['cart_id']; ?>">X</a></td>
                         </tr>
-                        <tr>
-                            <td><img src="image/product2.png" alt=""></td>
-                            <td><p>DAO NHẬT BUNKA</p></td>
-                            <td><input type="number" value="1" min="1"></td>
-                            <td><p>2.500.000 <sup>đ</sup></p></td>
-                            <td><span>X</span></td>
-                        </tr>
-                        <tr>
-                            <td><img src="image/product3.webp" alt=""></td>
-                            <td><p>DAO NHẬT BUNKA</p></td>
-                            <td><input type="number" value="1" min="1"></td>
-                            <td><p>2.500.000 <sup>đ</sup></p></td>
-                            <td><span>X</span></td>
-                        </tr>
+                        <?php endforeach; ?>
                     </table>
                 </div>
                 <div class="cart-content-right">
@@ -114,36 +132,14 @@
                 </div>
             </div>
         </div>
-
-    </section>
-    <section class="footer">
-        <div class="footer-container">
-            <p>Nhận Tư Vấn</p>
-            <div class="input-email">
-                <input type="text" placeholder="Nhập Email của bạn...">
-                <i class="fas fa-arrow-left"></i>
-            </div>
-            <div>
-                <li><a href=""><img src="image/logo.png" alt="" width="50" height="50"></a></li>
-                <li><a href="">Liên hệ</a></li>
-                <li><a href="">Giới thiệu</a></li>
-                <li><a href="">Tư Vấn</a></li>
-                <li><a href=""><i class="fab fa-facebook-f"></i></a><a href=""><i class="fab fa-youtube"></i></a></li>
-            </div>
-            <div class="footer-text">
-                Stim Store tự hào là thương hiệu chuyên cung cấp các loại dao Nhật Bản cao cấp <br>
-            Mang lại chất lượng vượt trội và độ bền bỉ, đúng chuẩn tinh hoa ẩm thực Nhật Bản. Được kiểm duyệt và trải nghiệm bởi đầu bếp nổi tiếng Hoshi Đào. <br>
-            FPT Polytechnic, đường Trịnh Văn Bô, phường Phương Canh, quận Nam Từ Liêm, Hà Nội. <br>
-            Hotline: 0345981925
-            </div>
-            <div>
-                Copyright © 2024 Stim Store.
-            </div>
-        </div>
     </section>
 
-    <script src="js/script.js"></script>
-    <script src="js/slide.js"></script>
-
+    <script>
+        function updateQuantity(cartId, quantity) {
+            window.location.href = `cart.php?update_quantity=${cartId}&quantity=${quantity}`;
+        }
+    </script>
 </body>
 </html>
+
+<?php include 'footer.php'; ?>
