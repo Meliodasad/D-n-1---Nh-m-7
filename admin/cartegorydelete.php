@@ -1,13 +1,13 @@
 <?php
-include 'class/categoryClass.php';
-$category = new Category();
-if (!isset($_GET['category_id']) || $_GET['category_id'] == NULL) {
+include 'class/cartegoryClass.php';
+$cartegory = new Cartegory();
+if (!isset($_GET['cartegory_id']) || $_GET['cartegory_id'] == NULL) {
     echo "<script>window.location = 'cartegorylist.php';</script>";
 
 }
 else {
-    $category_id = $_GET['category_id'];
+    $cartegory_id = $_GET['cartegory_id'];
 }
-    $delete_category = $category->delete_category($category_id);
+    $delete_cartegory = $cartegory->delete_cartegory($cartegory_id);
 
 ?>

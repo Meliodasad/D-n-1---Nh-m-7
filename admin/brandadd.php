@@ -1,15 +1,15 @@
 <?php
-include 'header.html';
-include 'slider.html';
+include 'header.php';
+include 'slider.php';
 include 'class/brandClass.php';
 ?>
 
 <?php
-$brand = new Brand();
+$brand = new Brand;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $category_id = $_POST['cartegory_id'];
+    $cartegory_id = $_POST['cartegory_id'];
     $brand_name = $_POST['brand_name'];
-    $insert_brand = $brand->insert_brand($category_id,$brand_name);
+    $insert_brand = $brand->insert_brand($cartegory_id,$brand_name);
 }
 
 ?>
@@ -18,21 +18,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     select{
     height: 30px;
     width: 200px;
+
     }
 </style>
 <div class="admin-content-right">
-            <div class="admin-content-right-category-add">
+            <div class="admin-content-right-cartegory-add">
                 <h1>Thêm loại sản phẩm</h1>
                 <form action="" method="POST">
                     <select name="cartegory_id"id="">
                         <option value="#">Chon danh muc</option>
                     <?php
-                $show_category = $brand->show_category();
-                if ($show_category) {while ($rusult = $show_category->fetch_assoc()) {
+                $show_cartegory = $brand->show_cartegory();
+                if ($show_cartegory) {while ($rusult = $show_cartegory->fetch_assoc()) {
                     
                 
                     ?>
-                        <option value="<?php echo $rusult['category_id'] ?>"><?php echo $rusult['category_name']?></option>
+                        <option value="<?php echo $rusult['cartegory_id'] ?>"><?php echo $rusult['cartegory_name']?></option>
                         <?php
                         }}
                         ?>
@@ -45,5 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
 
     </section>
+    
 </body>
 </html>

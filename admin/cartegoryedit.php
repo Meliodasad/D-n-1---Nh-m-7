@@ -1,20 +1,20 @@
 <?php
 include 'header.php';
-include 'class/categoryClass.php';
+include 'class/cartegoryClass.php';
 include 'slider.php';
 ?>
 <?php
-$category = new Category();
-if (!isset($_GET['category_id']) || $_GET['category_id'] == NULL) {
+$cartegory = new Cartegory;
+if (!isset($_GET['cartegory_id']) || $_GET['cartegory_id'] == NULL) {
     echo "<script>window.location = 'cartegorylist.php';</script>";
 
 }
 else {
-    $category_id = $_GET['category_id'];
+    $cartegory_id = $_GET['cartegory_id'];
 }
-    $get_category = $category->get_category($category_id);
-    if ($get_category) {
-        $result = $get_category-> fetch_assoc();
+    $get_cartegory = $cartegory->get_cartegory($cartegory_id);
+    if ($get_cartegory) {
+        $result = $get_cartegory-> fetch_assoc();
     }
 ?>
 
@@ -22,8 +22,8 @@ else {
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $category_name = $_POST['category_name'];
-    $update_category = $category->update_category($category_name, $category_id);
+    $cartegory_name = $_POST['cartegory_name'];
+    $update_cartegory = $cartegory->update_cartegory($cartegory_name, $cartegory_id);
 }
 ?>
 
@@ -36,11 +36,11 @@ if ($result) {
 ?>
 
 <div class="admin-content-right">
-            <div class="admin-content-right-category-add">
+            <div class="admin-content-right-cartegory-add">
                 <h1>Thêm danh mục</h1>
                 <form action="" method="POST">
-                    <input name="category_name" type="text" placeholder="Nhập tên danh mục" 
-                    value="<?php echo $result['category_name']; ?>">
+                    <input name="cartegory_name" type="text" placeholder="Nhập tên danh mục" 
+                    value="<?php echo $result['cartegory_name']; ?>">
                     <button type="submit">Sửa</button>
                 </form>
             </div>
