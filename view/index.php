@@ -47,7 +47,7 @@ $sale_products = $conn->query($sql_on_sale)->fetchAll(PDO::FETCH_ASSOC);
                 </a>
                 <h3><?= htmlspecialchars($product['product_name']) ?></h3>
                 <p><?= number_format($product['product_price'], 0, ',', '.') ?>₫</p>
-                <a href="cart.php?add=<?= $product['product_id'] ?>"><button>Thêm vào giỏ hàng</button></a>
+                <button onclick="addToCart(<?= $product['product_id'] ?>)">Thêm vào giỏ hàng</button>
             </div>
             <?php endforeach; ?>
         </div>
@@ -72,7 +72,7 @@ $sale_products = $conn->query($sql_on_sale)->fetchAll(PDO::FETCH_ASSOC);
                 <h3><?= htmlspecialchars($product['product_name']) ?></h3>
                 <p class="original-price"><?= number_format($product['product_price'], 0, ',', '.') ?>₫</p>
                 <p class="sale-price"><?= number_format($product['product_price_new'], 0, ',', '.') ?>₫</p>
-                <a href="cart.php?add=<?= $product['product_id'] ?>" class="buy-now">Thêm vào giỏ hàng</a>
+                <button onclick="addToCart(<?= $product['product_id'] ?>)">Thêm vào giỏ hàng</button>
             </div>
             <?php endforeach; ?>
         </div>
@@ -87,6 +87,24 @@ $sale_products = $conn->query($sql_on_sale)->fetchAll(PDO::FETCH_ASSOC);
     <script src="js/script.js"></script>
 
     <script src="js/slide.js"></script>
+    <script>
+    function addToCart(productId) {
+        fetch('add_to_cart.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ product_id: productId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Sản phẩm đã được thêm vào giỏ hàng!');
+            } else {
+                alert(data.message || 'Thêm vào giỏ hàng thất bại!');
+            }
+        })
+        .catch(error => console.error('Lỗi:', error));
+    }
+</script>
 
 
 </body>
