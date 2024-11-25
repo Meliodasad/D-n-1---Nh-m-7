@@ -35,7 +35,7 @@
             </li>
         </ul>
         </div>
-<center><h1 style="color: black;">CHÀO MỪNG ĐẾN VỚI TRANG QUẢN TRỊ DAO NHẬT</h1></center>
+<marquee behavior="" direction=""><center><h1 style="color: black;">CHÀO MỪNG ĐẾN VỚI TRANG QUẢN TRỊ DAO NHẬT</h1></center></marquee>
 
     </section><a href="/DuAn1/view/index.php">Về Lại Trang Giao Diện</a>
 </body>
