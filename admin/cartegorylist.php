@@ -1,6 +1,6 @@
 <?php 
 include_once 'database.php';  
-include_once 'class/categoryClass.php';
+include_once '/laragon/www/DuAn1/admin/class/cartegoryClass.php';
 include_once "header.html";  
 include 'slider.html';
 

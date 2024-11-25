@@ -1,11 +1,11 @@
 <?php
 include "header.html";
 include "slider.html";
-include "class/categoryClass.php";
+include "/laragon/www/DuAn1/admin/class/cartegoryClass.php";
 ?>
 
 <?php
-$category = new category;
+$category = new Category;
 if($_SERVER['REQUEST_METHOD']=== 'POST'){
     $category_name = $_POST['category_name'];
     $insert_category = $category -> insert_category($category_name);

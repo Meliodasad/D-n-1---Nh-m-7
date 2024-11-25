@@ -18,7 +18,7 @@
             <ul>
             <li><h2>Danh Mục</h2>
                 <ul>
-                    <li><a href="categoryadd.php">Thêm Danh Mục</a></li>
+                    <li><a href="cartegoryadd.php">Thêm Danh Mục</a></li>
                     <li><a href="cartegorylist.php">Danh Sách danh Mục</a></li>
                 </ul>
             </li>
