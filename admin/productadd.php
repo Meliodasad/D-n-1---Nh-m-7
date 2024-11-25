@@ -1,7 +1,7 @@
 <?php
-include "header.php";
-include "slider.php";
-include "class/product_class.php";
+include 'header.html';
+include 'slider.html';
+include 'class/product_class.php';
 ?>
 <?php
 $product = new Product;

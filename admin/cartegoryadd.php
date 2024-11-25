@@ -1,7 +1,7 @@
 <?php
 include "header.html";
 include "slider.html";
-include "/laragon/www/DuAn1/admin/class/cartegoryClass.php";
+include '/laragon/www/DuAn1/admin/class/cartegory_Class.php';
 
 $category = new Category;
 
