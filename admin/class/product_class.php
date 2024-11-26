@@ -56,6 +56,22 @@ class product {
         '$product_desc',
         '$product_img')";
         $result = $this->db->insert($query);
+        if ($result) {
+            $query = "SELECT * FROM tbl_product ORDER BY product_id DESC LIMIT 1";
+            $query = $this->db->select($query)->fetch_assoc();
+            $product_id = $result['product_id'];
+            $filename = $_FILES['product_img_desc']['name'];
+
+            $filttmp = $_FILES['product_img_desc']['tmp_name'];
+
+            foreach ($filename as $key => $value) {
+                move_uploaded_file($filttmp [$key],"uploads/".$value);
+                $query = "INSERT INTO tbl_product_img(product_id,product_img_desc) VALUES('$product_id','$value')";
+                $result = $this->db->insert($query);
+            }
+        }
+
+
         // header('location:brandlist.php');
         return $result;
     }
