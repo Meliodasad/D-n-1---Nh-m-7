@@ -235,9 +235,10 @@ if (isset($_POST['checkout'])) {
                         </p>
                     </div>
                     <div class="cart-content-right-button">
-                        <a href="product.php"><button type="button">Tiếp tục mua sắm</button></a>
+                        
                         <form method="POST" action="">
-                            <button type="submit" name="checkout">Thanh Toán</button>
+                            <a href="product.php"><button type="button">Tiếp tục mua sắm</button></a>
+                            <a href=""><button type="submit" name="checkout">Thanh Toán</button></a>
                         </form>
                     </div>
                 </div>
@@ -247,5 +248,6 @@ if (isset($_POST['checkout'])) {
             </div>
         </div>
     </section>
+    <?php include 'footer.php'; ?>
 </body>
 </html>

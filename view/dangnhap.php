@@ -62,5 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p>Bạn không nhớ tài khoản & mật khẩu của mình: <a href="quenmatkhau.php">Quên mật khẩu</a></p>
         </div>
     </section>
+
+    <?php include 'footer.php'; ?>
 </body>
 </html>
