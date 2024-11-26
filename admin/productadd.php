@@ -7,10 +7,10 @@ include 'class/product_class.php';
 $product = new Product;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // var_dump($_POST,$_FILES);
-    // echo '<pre>';
-    // echo print_r($_FILES);
-    // echo '</pre>';
-    $insert_product = $product ->insert_product($_FOST,$_FILES);
+    echo '<pre>';
+    echo print_r($_FILES['product_img_desc']['name']);
+    echo '</pre>';
+    // $insert_product = $product ->insert_product($_FOST,$_FILES);
 }
 ?>
 
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <label for="">ảnh sản phẩm <span style="color: red;">*</span></label>
         <input name="product_img" required type="file" >
         <label for="">ảnh mô tả <span style="color: red;">*</span></label>
-        <input name="product_img_desc" required multiple type="file" >
+        <input name="product_img_desc[]" required multiple type="file" >
         <button type="submit">Thêm</button>
         <!-- required:nhắc nhở không được để trống  -->
     </form>
