@@ -9,7 +9,7 @@ body {
 
 /* Style cho phần tiêu đề */
 header {
-    background-color: #111; /* Nền header đen hơn */
+    background-color: #3b3b3b; /* Nền header đen hơn */
     color: white;
     padding: 20px;
     text-align: center;
@@ -170,7 +170,7 @@ header h1 {
 
 .admin-content-right-cartegory-add button:hover {
     color: white;
-    background-color: #000000;
+    background-color: #2b2b2b;
 }
 
 /* product */
