@@ -27,8 +27,8 @@ if (isset($_GET['remove'])) {
     exit;
 }
 
-// Cập nhật số lượng sản phẩm
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_quantity'])) {
+// Cập nhật số lượng sản phẩm (Xử lý AJAX)
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cart_id']) && isset($_POST['quantity'])) {
     $cart_id = intval($_POST['cart_id']);
     $quantity = intval($_POST['quantity']);
 
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_quantity'])) {
         $stmt_update = $conn->prepare($sql_update);
         $stmt_update->execute([':quantity' => $quantity, ':cart_id' => $cart_id, ':user_id' => $user_id]);
     }
-    header("Location: cart.php");
+    // Trả về kết quả không có gì (để xử lý trong AJAX)
     exit;
 }
 
@@ -55,6 +55,10 @@ foreach ($cart_items as $cart) {
     $total_price += $cart['cart_price'] * $cart['cart_quantity'];
     $total_quantity += $cart['cart_quantity'];
 }
+
+// Định dạng tổng tiền và tổng số lượng với dấu phẩy
+$total_price_formatted = number_format($total_price);  // Dấu phẩy ở hàng nghìn
+$total_quantity_formatted = number_format($total_quantity);  // Định dạng số lượng sản phẩm
 
 // Xử lý thanh toán
 if (isset($_POST['checkout'])) {
@@ -74,6 +78,99 @@ if (isset($_POST['checkout'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giỏ hàng</title>
     <link rel="stylesheet" href="css/mainstyle.css">
+    <script>
+        function updateCart() {
+            var total_price = 0;
+            var total_quantity = 0;
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+
+            checkboxes.forEach(function(checkbox) {
+                var row = checkbox.closest('tr'); // Lấy hàng tương ứng với checkbox
+                var quantity = parseInt(row.querySelector('.quantity-input').value);
+                var price = parseFloat(row.querySelector('.product-price').dataset.price);
+                
+                total_price += price * quantity;
+                total_quantity += quantity;
+            });
+
+            // Cập nhật tổng số lượng và tổng tiền trên giao diện
+            document.getElementById('total_quantity').innerText = total_quantity.toLocaleString();
+            document.getElementById('total_price').innerText = total_price.toLocaleString() + '₫';
+
+            // Cập nhật thông tin miễn phí ship nếu có
+            var freeShipInfo = document.getElementById('free_ship_info');
+            if (total_price >= 3000000) {
+                freeShipInfo.innerText = "Bạn đã được miễn phí ship!";
+                freeShipInfo.style.color = "green";
+            } else {
+                freeShipInfo.innerHTML = "Mua thêm <span style='font-size: 18px;'>" + (3000000 - total_price).toLocaleString() + "₫</span> để được miễn phí ship!";
+                freeShipInfo.style.color = "red";
+            }
+        }
+
+        // Đảm bảo tính toán khi checkbox thay đổi
+        document.addEventListener('DOMContentLoaded', function() {
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(function(checkbox) {
+                checkbox.addEventListener('change', updateCart);
+            });
+            
+            // Cập nhật khi trang tải xong
+            updateCart();
+        });
+
+        // AJAX cập nhật số lượng khi nhấn tăng hoặc giảm
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hàm gửi yêu cầu AJAX để cập nhật số lượng
+            function updateQuantity(cart_id, quantity) {
+                var formData = new FormData();
+                formData.append('cart_id', cart_id);
+                formData.append('quantity', quantity);
+                
+                fetch('cart.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.text())
+                .then(data => {
+                    // Sau khi gửi thành công, cập nhật lại giao diện
+                    updateCart();
+                })
+                .catch(error => {
+                    alert('Có lỗi xảy ra khi cập nhật số lượng.');
+                });
+            }
+
+            // Xử lý sự kiện khi bấm nút "Tăng"
+            var increaseBtns = document.querySelectorAll('.increase-btn');
+            increaseBtns.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var cart_id = button.getAttribute('data-cart-id');
+                    var quantityInput = document.querySelector('#quantity_' + cart_id);
+                    var quantity = parseInt(quantityInput.value) + 1;
+                    quantityInput.value = quantity;
+                    updateQuantity(cart_id, quantity);
+                });
+            });
+
+            // Xử lý sự kiện khi bấm nút "Giảm"
+            var decreaseBtns = document.querySelectorAll('.decrease-btn');
+            decreaseBtns.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    var cart_id = button.getAttribute('data-cart-id');
+                    var quantityInput = document.querySelector('#quantity_' + cart_id);
+                    var quantity = parseInt(quantityInput.value) - 1;
+                    if (quantity > 0) {
+                        quantityInput.value = quantity;
+                        updateQuantity(cart_id, quantity);
+                    }
+                });
+            });
+            
+            // Cập nhật khi trang tải xong
+            updateCart();
+        });
+    </script>
 </head>
 <body>
     <section class="cart">
@@ -81,34 +178,38 @@ if (isset($_POST['checkout'])) {
             <div class="cart-content row">
                 <?php if (count($cart_items) > 0): ?>
                 <div class="cart-content-left">
-                    <table>
-                        <tr>
-                            <th>Chọn</th>
-                            <th>Sản phẩm</th>
-                            <th>Tên sản phẩm</th>
-                            <th>Số lượng</th>
-                            <th>Đơn Giá</th>
-                            <th>Xoá</th>
-                        </tr>
-                        <?php foreach ($cart_items as $cart): ?>
-                        <tr>
-                            <td><input type="checkbox" name="selected_items[]" value="<?php echo $cart['cart_id']; ?>"></td>
-                            <td><img src="<?= $cart['cart_img'] ?>" width="150" height="150"></td>
-                            <td><p><?php echo $cart['cart_name']; ?></p></td>
-                            <td>
-                                <form method="POST" action="" style="display: inline-block;">
-                                    <input type="hidden" name="cart_id" value="<?php echo $cart['cart_id']; ?>">
-                                    <input type="number" name="quantity" id="quantity_<?php echo $cart['cart_id']; ?>" 
-                                           value="<?php echo $cart['cart_quantity']; ?>" 
-                                           min="1" onchange="this.form.submit()">
-                                    <input type="hidden" name="update_quantity" value="1">
-                                </form>
-                            </td>
-                            <td><p id="price_<?php echo $cart['cart_id']; ?>"><?php echo number_format($cart['cart_price'] * $cart['cart_quantity']); ?> <sup>đ</sup></p></td>
-                            <td><a href="cart.php?remove=<?php echo $cart['cart_id']; ?>" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');">X</a></td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </table>
+                    <form method="POST" action="">
+                        <table>
+                            <tr>
+                                <th>Chọn</th>
+                                <th>Sản phẩm</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Số lượng</th>
+                                <th>Thành Tiền</th>
+                                <th>Xoá</th>
+                            </tr>
+                            <?php foreach ($cart_items as $cart): ?>
+                            <tr>
+                                <td><input type="checkbox" name="selected_items[]" value="<?php echo $cart['cart_id']; ?>"></td>
+                                <td><img src="<?= $cart['cart_img'] ?>" width="150" height="150"></td>
+                                <td><p><?php echo $cart['cart_name']; ?></p></td>
+                                <td>
+                                    <form method="POST" action="" style="display: inline-block;">
+                                        <input type="hidden" name="cart_id" value="<?php echo $cart['cart_id']; ?>">
+                                        <!-- Thêm nút tăng và giảm -->
+                                        <button type="button" class="increase-btn" data-cart-id="<?php echo $cart['cart_id']; ?>">+</button>
+                                        <input type="number" name="quantity" class="quantity-input" id="quantity_<?php echo $cart['cart_id']; ?>" 
+                                               value="<?php echo $cart['cart_quantity']; ?>" 
+                                               min="1" onchange="updateCart()">
+                                        <button type="button" class="decrease-btn" data-cart-id="<?php echo $cart['cart_id']; ?>">-</button>
+                                    </form>
+                                </td>
+                                <td><p class="product-price" style="font-weight: bold; font-size: 13px;" data-price="<?php echo $cart['cart_price']; ?>"><?php echo number_format($cart['cart_price'] * $cart['cart_quantity']); ?> <sup>đ</sup></p></td>
+                                <td><a href="cart.php?remove=<?php echo $cart['cart_id']; ?>" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');">X</a></td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </table>
+                    </form>
                 </div>
                 <div class="cart-content-right">
                     <table>
@@ -117,19 +218,21 @@ if (isset($_POST['checkout'])) {
                         </tr>
                         <tr>
                             <td>TỔNG SẢN PHẨM</td>
-                            <td><p id="total_quantity"><?php echo $total_quantity; ?></p></td>
+                            <td><p id="total_quantity"><?php echo $total_quantity_formatted; ?></p></td>
                         </tr>
                         <tr>
                             <td>TỔNG TIỀN HÀNG</td>
-                            <td><p id="total_price"><?php echo number_format($total_price); ?> <sup>đ</sup></p></td>
+                            <td><p id="total_price" style="font-weight: bold; font-size: 20px; "><?php echo $total_price_formatted; ?> <sup>đ</sup></p></td>
                         </tr>
                     </table>
                     <div class="cart-content-right-text">
-                        <?php if ($total_price >= 3000000): ?>
-                            <p>Bạn đã được miễn phí ship!</p>
-                        <?php else: ?>
-                            <p style="color: red; font-weight: bold;">Mua thêm <span style="font-size: 18px;"><?php echo number_format(3000000 - $total_price); ?>₫</span> để được miễn phí ship!</p>
-                        <?php endif; ?>
+                        <p id="free_ship_info" style="font-weight: bold;">
+                            <?php if ($total_price >= 3000000): ?>
+                                Bạn đã được miễn phí ship!
+                            <?php else: ?>
+                                Mua thêm <span style="font-size: 18px;"><?php echo number_format(3000000 - $total_price); ?>₫</span> để được miễn phí ship!
+                            <?php endif; ?>
+                        </p>
                     </div>
                     <div class="cart-content-right-button">
                         <a href="product.php"><button type="button">Tiếp tục mua sắm</button></a>
@@ -139,12 +242,10 @@ if (isset($_POST['checkout'])) {
                     </div>
                 </div>
                 <?php else: ?>
-                <p>Giỏ hàng của bạn hiện đang trống. <a href="product.php">Tiếp tục mua sắm</a>.</p>
+                    <p>Giỏ hàng của bạn chưa có sản phẩm nào.</p>
                 <?php endif; ?>
             </div>
         </div>
     </section>
 </body>
 </html>
-
-<?php include 'footer.php'; ?>
