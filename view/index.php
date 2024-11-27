@@ -1,6 +1,6 @@
 <?php
 require 'config.php'; 
-include 'header.php';
+
 
 
 $sql_highlighted = "SELECT * FROM tbl_product WHERE is_highlighted = 1";
@@ -24,6 +24,9 @@ $sale_products = $conn->query($sql_on_sale)->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="css/mainstyle.css">
 </head>
 <body>
+    <?php
+        include('header.php');
+    ?>
 
 
 <div class="slide-show">

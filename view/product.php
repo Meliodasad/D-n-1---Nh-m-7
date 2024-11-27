@@ -1,16 +1,23 @@
 <?php
 require 'config.php'; // Kết nối đến cơ sở dữ liệu
-include 'header.php';
-
-
-require 'config.php'; 
 $sql_highlighted = "SELECT * FROM tbl_product WHERE is_highlighted = 1";
 $highlighted_products = $conn->query($sql_highlighted)->fetchAll(PDO::FETCH_ASSOC);
 
 
 $sql_on_sale = "SELECT * FROM tbl_product WHERE is_on_sale = 1";
 $sale_products = $conn->query($sql_on_sale)->fetchAll(PDO::FETCH_ASSOC);
+
+function getCategories() {
+    global $conn;
+    $sql = "SELECT category_id, category_name FROM tbl_category";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
+$categories = getCategories();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,29 +29,33 @@ $sale_products = $conn->query($sql_on_sale)->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="css/products.css">
 </head>
 <body>
-
+    <?php
+        include('header.php');
+    ?>
 
 <div class="product-page">
 
     <div class="top-row">
         <div class="product-sidebar">
-                <h3>Danh mục sản phẩm</h3>
-            <ul>
-                <li><a href="#">Dao Cắt Thái</a></li>
-                <li><a href="#">Dao Phi Lê</a></li>
-                <li><a href="#">Dao Sushi</a></li>
-                <li><a href="#">Dao Chặt Xương</a></li>
-                <li><a href="#">Dao Bếp</a></li>
-            </ul>
-            <br>
+            <h3>Danh mục sản phẩm</h3>
+    <ul>
+        <?php foreach ($categories as $category): ?>
+            <li>
+                <a href="category.php?id=<?php echo $category['category_id']; ?>">
+                    <?php echo htmlspecialchars($category['category_name']); ?>
+                </a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
             <h3>Lọc Giá</h3>
-            <ul>
-                <li><a href="">Dưới 1.000.000₫</a></li>
-                <li><a href="">1.000.000₫ - 2.000.000₫</a></li>
-                <li><a href="">2.000.000₫ - 3.000.000₫</a></li>
-                <li><a href="">3.000.000₫ - 4.000.000₫</a></li>
-                <li><a href="">Trên 4.000.000₫</a></li>
-            </ul>
+    <ul>
+        <li><a href="category.php?id=<?php echo $category_id; ?>&price_range=under_1000000">Dưới 1.000.000₫</a></li>
+        <li><a href="category.php?id=<?php echo $category_id; ?>&price_range=1000000_2000000">1.000.000₫ - 2.000.000₫</a></li>
+        <li><a href="category.php?id=<?php echo $category_id; ?>&price_range=2000000_3000000">2.000.000₫ - 3.000.000₫</a></li>
+        <li><a href="category.php?id=<?php echo $category_id; ?>&price_range=3000000_4000000">3.000.000₫ - 4.000.000₫</a></li>
+        <li><a href="category.php?id=<?php echo $category_id; ?>&price_range=above_4000000">Trên 4.000.000₫</a></li>
+    </ul>
+
         </div>
         
         <div class="product-banner">

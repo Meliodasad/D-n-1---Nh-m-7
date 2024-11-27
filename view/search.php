@@ -10,34 +10,9 @@ require 'config.php';
     <link rel="stylesheet" href="css/mainstyle.css">
 </head>
 <body>
-    <header class="header">
-        <div class="header-container">
-            <div class="logo">
-                <a href="index.php"><img src="image/logo.png" alt="Logo" width="50" height="50"></a>
-            </div>
-            <nav>
-                <a href="index.php">Trang chủ</a>
-                <a href="product.php">Sản phẩm</a>
-                <a href="#">Giới thiệu</a>
-                <a href="#">Tư Vấn</a>
-                <a href="#">Liên hệ</a>
-            </nav>
-            <div class="search-bar">
-    <form method="GET" action="search.php">
-        <input type="text" id="search-input" name="query" placeholder="Tìm kiếm...">
-        <button type="submit" id="search-button"><i class="fas fa-search"></i> Tìm</button>
-    </form>
-</div>
-<div id="search-results" class="product-list"></div>
-            <div class="user-cart">
-                <a href="dangnhap.html" class="login">Đăng nhập</a>
-                <a href="dangky.html" class="signup">Đăng ký</a>
-                <a href="cart.html" class="cart">
-                    <i class="fas fa-shopping-cart"></i> Giỏ hàng
-                </a>
-            </div>
-        </div>
-    </header>
+<?php
+        include('header.php');
+    ?>
 
     <section class="main-container">
     <div class="highlighted-products">

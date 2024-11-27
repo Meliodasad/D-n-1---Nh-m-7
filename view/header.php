@@ -8,7 +8,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="mainstyle.cs">
+    <link rel="stylesheet" href="mainstyle.css">
     
 </head>
 <body>
@@ -28,10 +28,12 @@ session_start();
 
         <!-- Tìm kiếm -->
         <div class="search-bar">
-            <input type="text" id="search-input" placeholder="Tìm kiếm...">
-            <button id="search-button"><i class="fas fa-search"></i> Tìm</button>
-        </div>
-        <div id="search-results" class="product-list"></div>
+    <form method="GET" action="search.php">
+        <input type="text" id="search-input" name="query" placeholder="Tìm kiếm...">
+        <button type="submit" id="search-button"><i class="fas fa-search"></i> Tìm</button>
+    </form>
+</div>
+
 
         <div class="user-cart">
             <?php if (isset($_SESSION['user_id'])): ?>
@@ -51,6 +53,141 @@ session_start();
         </div>
     </div>
 </header>
+<style>
+    
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+
+.user-cart {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #fff;
+}
+
+.user-cart span {
+    font-size: 14px;
+    color: #00b4d8;
+}
+
+.user-cart a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.user-cart a:hover {
+    color: #ebd3b8;
+}
+
+.user-cart .cart {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.user-cart .cart i {
+    font-size: 18px;
+}
+.header {
+    background-color: #333333;
+    color: #fff;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.logo img {
+    display: block;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ebd3b8;
+}
+
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-bar input[type="text"] {
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    font-size: 14px;
+    width: 200px; 
+    transition: box-shadow 0.3s ease; 
+}
+
+.search-bar input[type="text"]:focus {
+    box-shadow: 0 0 5px rgba(0, 180, 216, 0.5);
+}
+
+.search-bar button {
+    padding: 8px 12px;
+    background-color: #ebd3b8;
+    border: none;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.search-bar button:hover {
+    background-color: #ebd3b8;
+}
+
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .search-bar input[type="text"] {
+        width: 100%;
+    }
+}
+
+</style>
 </body>
 </html>
 
