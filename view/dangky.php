@@ -30,7 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt = $conn->prepare("INSERT INTO tbl_user (username, email, password, phone, role) VALUES (?, ?, ?, ?, ?)");
                 if ($stmt->execute([$username, $email, $password, $phone, $role])) {
                     echo "<script>alert('Đăng ký thành công!');</script>";
-                    header("Location: dangnhap.php");
                 } else {
                     echo "<script>alert('Lỗi khi đăng ký: " . $stmt->errorInfo()[2] . "');</script>";
                 }
