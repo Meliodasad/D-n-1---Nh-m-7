@@ -18,7 +18,7 @@
             <ul>
             <li><h2>Danh Mục</h2>
                 <ul>
-                    <li><a href="categoryadd.php">Thêm Danh Mục</a></li>
+                    <li><a href="cartegoryadd.php">Thêm Danh Mục</a></li>
                     <li><a href="cartegorylist.php">Danh Sách danh Mục</a></li>
                 </ul>
             </li>
@@ -33,10 +33,26 @@
                     <li><a href="">Danh Sách Sản phẩm</a></li>
                 </ul>
             </li>
+            <li><h2>Giỏ Hàng</h2>
+                <ul>
+                    <li><a href="">Danh Sách Đặt Hàng</a></li>
+                    <li><a href="">Trạng thái hoàn thành</a></li>
+                </ul>
+            </li>
+            <li><h2>Tài Khoản</h2>
+                <ul>
+                    <li><a href="">Quản Lý Tài Khoản</a></li>
+                </ul>
+            </li>
         </ul>
         </div>
-<center><h1 style="color: black;">CHÀO MỪNG ĐẾN VỚI TRANG QUẢN TRỊ DAO NHẬT</h1></center>
 
-    </section><a href="/DuAn1/view/index.php">Về Lại Trang Giao Diện</a>
+    
+        <center>
+            <h1 style="color: black; margin: 50px 100px">CHÀO MỪNG ĐẾN VỚI TRANG QUẢN TRỊ STIM STORE - DAO NHẬT</h1>
+        </center>
+    
+
+    </section><a href="/DuAn1/view/index.php" >Về Lại Trang Giao Diện</a>
 </body>
 </html>

@@ -1,13 +1,13 @@
 <?php
-include 'header.html';
-include 'slider.html';
+include 'header.php';
+include 'slider.php';
 include 'class/brandClass.php';
 ?>
 
 <?php
-$brand = new Brand();
+$brand = new Brand;
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $category_id = $_POST['cartegory_id'];
+    $category_id = $_POST['category_id'];
     $brand_name = $_POST['brand_name'];
     $insert_brand = $brand->insert_brand($category_id,$brand_name);
 }
@@ -18,10 +18,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     select{
     height: 30px;
     width: 200px;
+
     }
 </style>
 <div class="admin-content-right">
-            <div class="admin-content-right-category-add">
+            <div class="admin-content-right-cartegory-add">
                 <h1>Thêm loại sản phẩm</h1>
                 <form action="" method="POST">
                     <select name="cartegory_id"id="">
@@ -45,5 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
 
     </section>
+    
 </body>
 </html>

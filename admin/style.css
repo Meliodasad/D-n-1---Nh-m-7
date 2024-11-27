@@ -9,7 +9,7 @@ body {
 
 /* Style cho phần tiêu đề */
 header {
-    background-color: #111; /* Nền header đen hơn */
+    background-color: #3b3b3b; /* Nền header đen hơn */
     color: white;
     padding: 20px;
     text-align: center;
@@ -28,43 +28,43 @@ header h1 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.admin-content-right-category-list h1 {
+.admin-content-right-cartegory-list h1 {
     font-size: 24px;
     margin-bottom: 20px;
 }
 
 /* Style cho bảng danh mục */
-.admin-content-right-category-list table {
+.admin-content-right-cartegory-list table {
     width: 1000px;
     margin: 0 100px;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
-.admin-content-right-category-list table th, .admin-content-right-category-list table td {
+.admin-content-right-cartegory-list table th, .admin-content-right-cartegory-list table td {
     padding: 10px 12px; /* Giảm padding để bảng nhỏ lại */
     border: 1px solid #ddd;
     text-align: center;
     font-size: 14px; /* Giảm kích thước font chữ */
 }
 
-.admin-content-right-category-list table th {
+.admin-content-right-cartegory-list table th {
     background-color: #222; /* Nền bảng thậm chí đen hơn */
     color: white;
     font-weight: bold;
 }
 
 /* Style cho hàng trong bảng */
-.admin-content-right-category-list table tr:nth-child(even) {
+.admin-content-right-cartegory-list table tr:nth-child(even) {
     background-color: #555; /* Nền các hàng chẵn màu xám đậm */
 }
 
-.admin-content-right-category-list table tr:hover {
+.admin-content-right-cartegory-list table tr:hover {
     background-color: #666; /* Nền khi hover vào hàng */
 }
 
 /* Style cho các nút sửa, xoá */
-.admin-content-right-category-list table td a {
+.admin-content-right-cartegory-list table td a {
     padding: 6px 12px;
     background-color: #cdcdcd;
     color: rgb(0, 0, 0);
@@ -75,13 +75,13 @@ header h1 {
     font-size: 14px;
 }
 
-.admin-content-right-category-list table td a:hover {
+.admin-content-right-cartegory-list table td a:hover {
     color: white;
     background-color: #000000;
 }
 
 /* Style cho thông báo không có dữ liệu */
-.admin-content-right-category-list table td[colspan='4'] {
+.admin-content-right-cartegory-list table td[colspan='4'] {
     text-align: center;
     color: #bbb; /* Màu chữ sáng hơn một chút */
     font-style: italic;
@@ -141,7 +141,7 @@ header h1 {
     background-color: #6c757d;
 }
 
-.admin-content-right-category-add input {
+.admin-content-right-cartegory-add input {
     width: 100%; /* Chiếm toàn chiều rộng */
     padding: 10px; /* Khoảng cách trong ô */
     margin-bottom: 15px; /* Khoảng cách dưới */
@@ -151,13 +151,13 @@ header h1 {
     box-sizing: border-box; /* Không tràn khung */
 }
 
-.admin-content-right-category-add input:focus {
+.admin-content-right-cartegory-add input:focus {
     border-color: #4e4e4e; /* Viền xanh khi focus */
     outline: none; /* Bỏ viền mặc định */
     box-shadow: 0 0 5px #3d3d3d; /* Hiệu ứng ánh sáng */
 }
 
-.admin-content-right-category-add button {
+.admin-content-right-cartegory-add button {
     background-color: #bababa; /* Màu xanh lá nổi bật */
     color: rgb(0, 0, 0); /* Màu chữ trắng */
     padding: 10px 20px; /* Khoảng cách trong nút */
@@ -168,8 +168,44 @@ header h1 {
     transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu */
 }
 
-.admin-content-right-category-add button:hover {
+.admin-content-right-cartegory-add button:hover {
     color: white;
-    background-color: #000000;
+    background-color: #2b2b2b;
 }
 
+/*-- product --*/
+.admin-content-right-product-add h1{
+margin-top: 20px;
+}
+
+.admin-content-right-product-add input,select{
+    width: 200px; /* Chiếm toàn chiều rộng */
+    height: 30px;
+    display: block; /* Chuyển khóa lớp inline-block */
+    margin: 6px 0 12px; /* Khoảng cách dưới */
+    padding-left: 12px; /* Khoảng cách trái */
+} 
+
+.admin-content-right-product-add input textarea{ 
+    display: block; 
+    height: 200px; 
+    width: 500px;
+    margin-bottom: 12px;
+    padding: 12px;
+}
+.admin-content-right-product-add button{
+    display: block;
+    margin-top: 10px;
+    height: 30px;
+    width: 100px;
+    cursor: pointer;
+    background-color: brown;
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+}
+.admin-content-right-product-add button:hover{
+    background-color:  transparent;
+    border: 1px solid brown;
+    color: brown;
+}

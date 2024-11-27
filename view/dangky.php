@@ -88,9 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
     </section>
 
-    <footer class="footer">
-        <!-- Footer giữ nguyên -->
-    </footer>
+    <?php include 'footer.php'; ?>
 
     <script src="js/script.js"></script>
 </body>

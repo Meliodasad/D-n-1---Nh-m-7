@@ -1,10 +1,10 @@
 <?php
 include 'header.php';
-include 'class/categoryClass.php';
+include 'class/cartegoryClass.php';
 include 'slider.php';
 ?>
 <?php
-$category = new Category();
+$category = new Category;
 if (!isset($_GET['category_id']) || $_GET['category_id'] == NULL) {
     echo "<script>window.location = 'cartegorylist.php';</script>";
 
@@ -36,7 +36,7 @@ if ($result) {
 ?>
 
 <div class="admin-content-right">
-            <div class="admin-content-right-category-add">
+            <div class="admin-content-right-cartegory-add">
                 <h1>Thêm danh mục</h1>
                 <form action="" method="POST">
                     <input name="category_name" type="text" placeholder="Nhập tên danh mục" 
