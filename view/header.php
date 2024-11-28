@@ -37,7 +37,7 @@ session_start();
 
         <div class="user-cart">
             <?php if (isset($_SESSION['user_id'])): ?>
-                <span>Xin chào, <?= htmlspecialchars($_SESSION['email']) ?></span>
+                <span style="margin: 0px 30px">Xin chào,<br> <?= htmlspecialchars($_SESSION['email']) ?></span>
                 <a href="dangxuat.php" class="logout">Đăng xuất</a>
             <?php else: ?>
                 <a href="dangnhap.php" class="login">Đăng nhập</a>
@@ -66,8 +66,8 @@ body {
 .user-cart {
     display: flex;
     align-items: center;
-    gap: 15px;
-    color: #fff;
+    gap: 20px;
+    flex-shrink: 0; /* Ngăn co lại */
 }
 
 .user-cart span {
@@ -109,8 +109,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
+    flex-wrap: nowrap; /* Ngăn xuống dòng */
 }
 
 
@@ -121,6 +120,7 @@ body {
 nav {
     display: flex;
     gap: 20px;
+    flex-shrink: 0; /* Ngăn co lại */
 }
 
 nav a {
@@ -139,6 +139,7 @@ nav a:hover {
     display: flex;
     align-items: center;
     gap: 10px;
+    flex-shrink: 0; /* Ngăn co lại */
 }
 
 .search-bar input[type="text"] {

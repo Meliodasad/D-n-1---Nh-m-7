@@ -8,6 +8,7 @@ if ($product_id == 0) {
     exit();
 }
 
+// Hàm lấy chi tiết sản phẩm
 function getProductDetails($product_id) {
     global $conn;
     $sql = "SELECT * FROM tbl_product WHERE product_id = :product_id";
@@ -17,6 +18,7 @@ function getProductDetails($product_id) {
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
 
+// Không cần định nghĩa lại getRelatedProducts nếu đã có trong config.php
 $product = getProductDetails($product_id);
 
 if (!$product) {
@@ -26,6 +28,7 @@ if (!$product) {
 
 $related_products = getRelatedProducts($product['category_id'], $product['product_id']);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,53 +42,71 @@ $related_products = getRelatedProducts($product['category_id'], $product['produc
 </head>
 <body>
 <?php include 'header.php'; ?>
+
 <main class="product-detail">
     <div class="product-image">
         <img src="<?= $product['product_img'] ?>" alt="<?= htmlspecialchars($product['product_name']) ?>" width="300" height="300">
     </div>
     <div class="product-info">
         <h1><?php echo htmlspecialchars($product['product_name']); ?></h1>
-        <p><strong>Giá:</strong> <?php echo number_format($product['product_price'], 0, ',', '.'); ?>₫</p>
-        <?php if (!empty($product['product_price_new'])): ?>
-        <?php endif; ?>
+        <p style="font-weight: bold; font-size:20px; color:red;"><strong>Giá:</strong> <?php echo number_format($product['product_price'], 0, ',', '.'); ?>₫</p>
         <p><strong>Mô tả:</strong> <?php echo nl2br(htmlspecialchars($product['product_desc'])); ?></p>
 
         <div class="quantity-container">
-            <p>Số lượng:</p>
+            <p>Số lượng :</p>
             <button class="quantity-btn" id="decrease" onclick="updateQuantity(-1)">-</button>
-            <input  id="quantity" value="1" min="1" />
+            <input id="quantity" value="1" min="1" />
             <button class="quantity-btn" id="increase" onclick="updateQuantity(1)">+</button>
         </div>
         
-        <a href="add_to_cart.php"><button class="add-to-cart-btn" onclick="addToCart(<?= $product['product_id'] ?>)">Thêm vào giỏ hàng</button></a>
+        <button onclick="addToCart(<?= $product['product_id'] ?>)">Thêm vào giỏ hàng</button>
     </div>
 </main>
 
-    </main>
-
-
-
-    <section class="main-product">
+<section class="main-product">
     <div class="highlighted-products">
-    <h2>Sản phẩm liên quan</h2>
-    <div class="product-list">
-        <?php  
-        $related_products = getRelatedProducts($product['category_id'], $product['product_id']);
-        foreach ($related_products as $related_product): ?>
-            <div class="product">
-                <a href="product_detail.php?id=<?= $related_product['product_id'] ?>">
-                    <img src="<?= $related_product['product_img'] ?>" alt="<?= htmlspecialchars($related_product['product_name']) ?>" width="150" height="150">
-                </a>
-                <h4><?= htmlspecialchars($related_product['product_name']) ?></h4>
-                <p><?= number_format($related_product['product_price'], 0, ',', '.') ?>₫</p>
-                <a href="add_to_cart.php"><button  onclick="addToCart(<?= $product['product_id'] ?>)">Thêm vào giỏ hàng</button></a>
-            </div>
-        <?php endforeach; ?>
+        <h2>Sản phẩm liên quan</h2>
+        <div class="product-list">
+            <?php
+            if (!empty($related_products)) {
+                foreach ($related_products as $related_product): ?>
+                    <div class="product">
+                        <a href="product_detail.php?id=<?= $related_product['product_id'] ?>">
+                            <img src="<?= $related_product['product_img'] ?>" alt="<?= htmlspecialchars($related_product['product_name']) ?>" width="150" height="150">
+                        </a>
+                        <h4><?= htmlspecialchars($related_product['product_name']) ?></h4>
+                        <p><?= number_format($related_product['product_price'], 0, ',', '.') ?>₫</p>
+                        <button onclick="addToCart(<?= $related_product['product_id'] ?>)">Thêm vào giỏ hàng</button>
+                    </div>
+                <?php endforeach;
+            } else {
+                echo "<p>Không có sản phẩm liên quan.</p>";
+            }
+            ?>
+        </div>
     </div>
-</div>
 </section>
-<script src="js/detai.js"></script>
 
+<script src="js/detai.js"></script>
 <?php include 'footer.php'; ?>
+
+<script>
+    function addToCart(productId) {
+        fetch('add_to_cart.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ product_id: productId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Sản phẩm đã được thêm vào giỏ hàng!');
+            } else {
+                alert(data.message || 'Thêm vào giỏ hàng thất bại!');
+            }
+        })
+        .catch(error => console.error('Lỗi:', error));
+    }
+</script>
 </body>
 </html>

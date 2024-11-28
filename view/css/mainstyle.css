@@ -954,6 +954,7 @@ h2 a:hover {
 
 
 .form-quenmk {
+    margin: 30px 30px;
     margin-bottom: 15px;
     text-align: left;
 }
@@ -977,7 +978,7 @@ h2 a:hover {
 
 .form-quenmk button {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #404040;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -988,14 +989,14 @@ h2 a:hover {
 }
 
 .form-quenmk button:hover {
-    background-color: #0056b3;
+    background-color: #414141;
 }
 
 .form-quenmk a {
     display: block;
     margin-top: 10px;
     font-size: 14px;
-    color: #007bff;
+    color: #424242;
     text-decoration: none;
     text-align: center;
 }

@@ -87,3 +87,22 @@
     font-size: 18px;
     color: red;
 }
+
+button {
+    padding: 10px 20px;
+    background-color: #757575; /* Màu xanh */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #000000; /* Màu xanh đậm hơn khi hover */
+}
+
+button:active {
+    background-color: #000000; /* Màu tối hơn khi nhấn */
+}

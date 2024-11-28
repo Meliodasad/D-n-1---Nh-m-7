@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=
     , initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Danh Mục Sản Phẩm</title>
+    <title>Quản Trị Stim Store</title>
 </head>
 <body>
     <header>
