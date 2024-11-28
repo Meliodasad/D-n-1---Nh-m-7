@@ -1,5 +1,5 @@
 <?php
-require 'config.php'; // Kết nối đến cơ sở dữ liệu
+require 'config.php'; 
 
 $sql_highlighted = "SELECT * FROM tbl_product WHERE is_highlighted = 1";
 $highlighted_products = $conn->query($sql_highlighted)->fetchAll(PDO::FETCH_ASSOC);
@@ -41,9 +41,8 @@ $categories = getCategories();
 
 <div class="product-page">
     <div class="top-row">
-        <div class="product-sidebar">
+            <div class="product-sidebar">
             <h3>Danh mục sản phẩm</h3>
-
             <ul>
                 <?php foreach ($categories as $category): ?>
                     <li>
@@ -53,16 +52,19 @@ $categories = getCategories();
                     </li>
                 <?php endforeach; ?>
             </ul>
-                    <h3>Lọc Giá</h3>
-            <ul>
-                <li><a href="category.php?id=<?php echo $category_id; ?>&price_range=under_1000000">Dưới 1.000.000₫</a></li>
-                <li><a href="category.php?id=<?php echo $category_id; ?>&price_range=1000000_2000000">1.000.000₫ - 2.000.000₫</a></li>
-                <li><a href="category.php?id=<?php echo $category_id; ?>&price_range=2000000_3000000">2.000.000₫ - 3.000.000₫</a></li>
-                <li><a href="category.php?id=<?php echo $category_id; ?>&price_range=3000000_4000000">3.000.000₫ - 4.000.000₫</a></li>
-                <li><a href="category.php?id=<?php echo $category_id; ?>&price_range=above_4000000">Trên 4.000.000₫</a></li>
-            </ul>
 
-        </div>
+            <h3>Lọc Giá</h3>
+            <ul>
+                <li><a href="category.php?id=<?php echo $category_id ?: 0; ?>&price_range=under_1000000">Dưới 1.000.000₫</a></li>
+                <li><a href="category.php?id=<?php echo $category_id ?: 0; ?>&price_range=1000000_2000000">1.000.000₫ - 2.000.000₫</a></li>
+                <li><a href="category.php?id=<?php echo $category_id ?: 0; ?>&price_range=2000000_3000000">2.000.000₫ - 3.000.000₫</a></li>
+                <li><a href="category.php?id=<?php echo $category_id ?: 0; ?>&price_range=3000000_4000000">3.000.000₫ - 4.000.000₫</a></li>
+                <li><a href="category.php?id=<?php echo $category_id ?: 0; ?>&price_range=above_4000000">Trên 4.000.000₫</a></li>
+            </ul>
+            </div>
+
+
+
         <div class="product-banner">
             <img src="image/banner3.webp" alt="Banner sản phẩm">
         </div>

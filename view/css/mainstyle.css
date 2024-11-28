@@ -950,3 +950,42 @@ h2 a:hover {
 .payment-content-left {
     margin-bottom: 30px;
 }
+
+.dangky-container input[type="email"],
+.dangky-container input[type="password"] {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.dangky-container button {
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.dangky-container button:hover {
+    background-color: #0056b3;
+}
+
+.dangky-container a {
+    display: block;
+    margin-top: 15px;
+    text-align: center;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.dangky-container a:hover {
+    text-decoration: underline;
+}
