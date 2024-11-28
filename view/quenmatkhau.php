@@ -1,5 +1,6 @@
 <?php
 include('config.php');
+include 'header.php'; 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email'] ?? '');
@@ -13,10 +14,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute([$email]);
 
             if ($stmt->rowCount() > 0) {
-                // Cập nhật mật khẩu
-                $hashedPassword = password_hash($newPassword, PASSWORD_BCRYPT);
+                // Cập nhật mật khẩu (lưu ở dạng thuần)
                 $stmt = $conn->prepare("UPDATE tbl_user SET password = ? WHERE email = ?");
-                if ($stmt->execute([$hashedPassword, $email])) {
+                if ($stmt->execute([$newPassword, $email])) {
                     echo "<script>alert('Mật khẩu đã được thay đổi thành công!');</script>";
                 } else {
                     echo "<script>alert('Lỗi khi đặt lại mật khẩu!');</script>";
@@ -39,26 +39,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quên Mật Khẩu</title>
-    <link rel="stylesheet" href="mainstyle.css">
+    <link rel="stylesheet" href="css/mainstyle.css">
 </head>
 <body>
-<?php include('header.php'); ?>
-    <h2>Quên Mật Khẩu</h2>
-    <form action="" method="post">
-        <div class="quenmatkhau">
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-       
-            <label for="new-password">Mật khẩu mới:</label>
-            <input type="password" id="new-password" name="new-password" required>
-       
-            <label for="confirm-password">Xác nhận mật khẩu:</label>
-            <input type="password" id="confirm-password" name="confirm-password" required>
-        
-        <button type="submit">Đổi Mật Khẩu</button>
-        <a href="dangnhap.php">Quay Lại Trang Đăng Nhập</a>
-    </div>
-    </form>
+    <div class="dangky-container">
+        <h2>Quên Mật Khẩu</h2>
+        <form action="" method="post">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div class="form-group">
+            <div>
+                <label for="new-password">Mật khẩu mới:</label>
+                <input type="password" id="new-password" name="new-password" required>
+            </div class="form-group">
+            <div class="form-group">
+                <label for="confirm-password">Xác nhận mật khẩu:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+            <div>
+                <button type="submit">Đổi Mật Khẩu</button>
+                <a href="dangnhap.php">Quay Lại Trang Đăng Nhập</a>
+            </div>
+        </form>
+        </div>
     <?php include 'footer.php'; ?>
 </body>
 </html>

@@ -1,6 +1,7 @@
 <?php
 // Bao gồm file cấu hình kết nối PDO
 include('config.php');
+include 'header.php';
 
 // Xử lý đăng ký
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -52,9 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="css/mainstyle.css">
 </head>
 <body>
-    <header class="header">
-        <!-- Header giữ nguyên -->
-    </header>
 
     <section class="dangky-section">
         <div class="dangky-container">
