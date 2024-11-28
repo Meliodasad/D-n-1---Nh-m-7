@@ -45,19 +45,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="dangky-container">
         <h2>Quên Mật Khẩu</h2>
         <form action="" method="post">
-            <div class="form-group">
+            <div class="form-quenmk">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
-            </div class="form-group">
-            <div>
+            </div>
+            <div class="form-quenmk">
                 <label for="new-password">Mật khẩu mới:</label>
                 <input type="password" id="new-password" name="new-password" required>
-            </div class="form-group">
-            <div class="form-group">
+            </div>
+            <div class="form-quenmk">
                 <label for="confirm-password">Xác nhận mật khẩu:</label>
                 <input type="password" id="confirm-password" name="confirm-password" required>
             </div>
-            <div>
+            <div class="form-quenmk">
                 <button type="submit">Đổi Mật Khẩu</button>
                 <a href="dangnhap.php">Quay Lại Trang Đăng Nhập</a>
             </div>
