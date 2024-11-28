@@ -209,3 +209,126 @@ margin-top: 20px;
     border: 1px solid brown;
     color: brown;
 }
+
+/* product add */
+.admin-content-right {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title section */
+.admin-content-right-product_add h1 {
+    text-align: center;
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Form styling */
+form {
+    display: grid;
+    gap: 15px;
+}
+
+/* Input fields */
+input[type="text"],
+input[type="file"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Focus styling */
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+    border-color: #66cc66;
+    outline: none;
+}
+
+/* Labels */
+label {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Error styling for required fields */
+span {
+    color: red;
+}
+
+/* Button styling */
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #66cc66;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #4caf50;
+}
+
+/* Select box styling */
+select {
+    background-color: #fff;
+    cursor: pointer;
+}
+
+/* Make textarea more spacious */
+textarea {
+    height: 150px;
+}
+
+/* File input specific styling */
+input[type="file"] {
+    border: none;
+    padding: 5px;
+}
+
+/* Multiple file input styling */
+input[type="file"][multiple] {
+    padding: 5px;
+}
+
+/* Grid layout for the form */
+form {
+    display: grid;
+    gap: 15px;
+}
+
+/* Ensure that large form elements don't stretch too much */
+form input,
+form textarea,
+form select {
+    width: 100%;
+}
+
+/* Add spacing between the form and buttons */
+form button {
+    align-self: center;
+    margin-top: 15px;
+}
+
+/* Make the form responsive for smaller screens */
+@media (max-width: 768px) {
+    .admin-content-right {
+        padding: 15px;
+    }
+
+    form {
+        grid-template-columns: 1fr;
+    }
+}
