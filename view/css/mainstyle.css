@@ -951,19 +951,32 @@ h2 a:hover {
     margin-bottom: 30px;
 }
 
-.dangky-container input[type="email"],
-.dangky-container input[type="password"] {
-    padding: 10px;
+
+
+.form-quenmk {
     margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-quenmk label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #555;
+}
+
+.form-quenmk input[type="email"],
+.form-quenmk input[type="password"] {
+    padding: 10px;
+    width: 100%;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 14px;
-    width: 100%;
     box-sizing: border-box;
 }
 
-.dangky-container button {
-    padding: 10px;
+.form-quenmk button {
+    padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
     border: none;
@@ -971,21 +984,22 @@ h2 a:hover {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
+    width: 100%;
 }
 
-.dangky-container button:hover {
+.form-quenmk button:hover {
     background-color: #0056b3;
 }
 
-.dangky-container a {
+.form-quenmk a {
     display: block;
-    margin-top: 15px;
-    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
     color: #007bff;
     text-decoration: none;
-    font-size: 14px;
+    text-align: center;
 }
 
-.dangky-container a:hover {
+.form-quenmk a:hover {
     text-decoration: underline;
 }
