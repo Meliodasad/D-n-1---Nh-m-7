@@ -12,7 +12,7 @@ $show_category = $category->show_category();
     <div class="admin-content-right">
         <div class="admin-content-right-category-list">
             <h1>Danh Sách Danh Mục</h1>
-            <table>
+            <table border="1">
                 <tr>
                     <th>STT</th>     
                     <th>ID</th> 
@@ -30,7 +30,7 @@ $show_category = $category->show_category();
                             <td><?php echo $result['category_id']; ?></td>
                             <td><?php echo $result['category_name']; ?></td>
                             <td>
-                                <a href="categoryedit.php?category_id=<?php echo $result['category_id']; ?>">Sửa</a> |
+                                <a href="admin/cartegoryedit.php?category_id=<?php echo $result['category_id']; ?>">Sửa</a> |
                                 <a href="categorydelete.php?category_id=<?php echo $result['category_id']; ?>">Xóa</a>
                             </td>
                         </tr>

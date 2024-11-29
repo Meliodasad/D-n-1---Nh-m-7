@@ -1,52 +1,45 @@
 <?php
-include 'header.php';
-include 'class/cartegoryClass.php';
-include 'slider.php';
-?>
-<?php
-$category = new Category;
-if (!isset($_GET['category_id']) || $_GET['category_id'] == NULL) {
-    echo "<script>window.location = 'cartegorylist.php';</script>";
+include_once 'database.php';  
+include 'admin/class/cartegory_Class.php';  
+include "header.html";  
+include 'slider.html';
 
-}
-else {
+if (isset($_GET['category_id'])) {
     $category_id = $_GET['category_id'];
-}
-    $get_category = $category->get_category($category_id);
-    if ($get_category) {
-        $result = $get_category-> fetch_assoc();
+
+    $category = new Category();
+    $category_data = $category->get_category($category_id);
+
+    if (!$category_data) {
+        echo "<script>alert('Danh mục không tồn tại!'); window.location.href = 'cartegorylist.php';</script>";
+        exit();
     }
-?>
 
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $category_name = $_POST['category_name'];
 
-<?php
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $category_name = $_POST['category_name'];
-    $update_category = $category->update_category($category_name, $category_id);
-}
-?>
-
-<?php
-if ($result) {
-    echo "Thêm danh mục thành công!";
+        if ($category->update_category($category_name, $category_id)) {
+            echo "<script>alert('Cập nhật danh mục thành công!'); window.location.href = 'cartegorylist.php';</script>";
+        } else {
+            echo "<script>alert('Lỗi khi cập nhật danh mục!');</script>";
+        }
+    }
 } else {
-    echo "Lỗi khi thêm danh mục.";
+    echo "Danh mục không tồn tại.";
+    exit();
 }
 ?>
 
 <div class="admin-content-right">
-            <div class="admin-content-right-cartegory-add">
-                <h1>Thêm danh mục</h1>
-                <form action="" method="POST">
-                    <input name="category_name" type="text" placeholder="Nhập tên danh mục" 
-                    value="<?php echo $result['category_name']; ?>">
-                    <button type="submit">Sửa</button>
-                </form>
-            </div>
-
-        </div>
-
-    </section>
+    <div class="admin-content-right-category-edit">
+        <h1>Sửa Danh Mục</h1>
+        <form action="" method="POST">
+            <label for="category_name">Tên Danh Mục</label>
+            <input type="text" name="category_name" value="<?php echo $category_data['category_name']; ?>" required>
+            <button type="submit">Cập Nhật</button>
+        </form>
+    </div>
+</div>
+</section>
 </body>
 </html>

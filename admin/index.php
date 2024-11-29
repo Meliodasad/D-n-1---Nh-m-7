@@ -18,19 +18,14 @@
             <ul>
             <li><h2>Danh Mục</h2>
                 <ul>
-                    <li><a href="cartegoryadd.php">Thêm Danh Mục</a></li>
-                    <li><a href="cartegorylist.php">Danh Sách danh Mục</a></li>
+                    <li><a href="cartegoryadd.php">Thêm Loại Sản Phẩm</a></li>
+                    <li><a href="cartegorylist.php">Danh Sách Loại Sản Phẩm</a></li>
                 </ul>
             </li>
-            <li><h2>Loại Sản Phẩm</h2>
-                <ul>
-                    <li><a href="">Thêm Loại Sản Phẩm</a></li>
-                    <li><a href="">Danh Sách loại sản phẩm</a></li>
-                </ul></li>
             <li><h2>Sản phẩm</h2>
                 <ul>
                     <li><a href="">Thêm sản phẩm</a></li>
-                    <li><a href="">Danh Sách Sản phẩm</a></li>
+                    <li><a href="productlist.php">Danh Sách Sản phẩm</a></li>
                 </ul>
             </li>
             <li><h2>Giỏ Hàng</h2>

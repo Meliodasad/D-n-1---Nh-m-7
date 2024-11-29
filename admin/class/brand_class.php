@@ -1,6 +1,6 @@
 
 <?php
-include 'database.php';
+include_once 'database.php';
 ?>
 <?php
 class brand {

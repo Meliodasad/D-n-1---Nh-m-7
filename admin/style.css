@@ -216,7 +216,7 @@ margin-top: 20px;
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: #454545;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -251,7 +251,7 @@ select {
 input[type="text"]:focus,
 textarea:focus,
 select:focus {
-    border-color: #66cc66;
+    border-color: #585858;
     outline: none;
 }
 
@@ -269,7 +269,7 @@ span {
 /* Button styling */
 button[type="submit"] {
     padding: 10px 20px;
-    background-color: #66cc66;
+    background-color: #676767;
     color: white;
     font-size: 16px;
     border: none;
@@ -278,7 +278,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #4caf50;
+    background-color: #151515;
 }
 
 /* Select box styling */
@@ -331,4 +331,43 @@ form button {
     form {
         grid-template-columns: 1fr;
     }
+}
+
+.admin-content-right-category-edit {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #373737;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-content-right-category-edit h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.admin-content-right-category-edit form {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-content-right-category-edit input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.admin-content-right-category-edit button {
+    padding: 10px;
+    background-color: #525252;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.admin-content-right-category-edit button:hover {
+    background-color: #161616;
 }
