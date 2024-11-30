@@ -22,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <section>
         <div class="admin-content-right">
         <div class="admin-content-right-product_add">
             <h1>Thêm sản phẩm</h1>
@@ -74,6 +73,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         </div>
 
-    </section>
 </body>
 </html>

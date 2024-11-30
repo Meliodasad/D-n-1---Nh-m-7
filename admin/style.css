@@ -224,7 +224,7 @@ margin-top: 20px;
 /* Title section */
 .admin-content-right-product_add h1 {
     text-align: center;
-    color: #333;
+    color: #ffffff;
     font-size: 24px;
     margin-bottom: 20px;
 }
@@ -258,7 +258,7 @@ select:focus {
 /* Labels */
 label {
     font-size: 16px;
-    color: #555;
+    color: #ebebeb;
 }
 
 /* Error styling for required fields */
