@@ -1,43 +1,66 @@
 <?php
 include 'header.html';
 include 'slider.html';
-include_once 'database.php';  // Bao gồm kết nối cơ sở dữ liệu từ database.php
+include 'class/product_class.php';
 
-// Truy vấn dữ liệu
-$sql = "SELECT product_id, product_name, category_id, brand_id, product_price, product_price_new, product_desc, product_img FROM products";
-$result = $conn->query($sql);
-
-// Kiểm tra và hiển thị kết quả
-if ($result->num_rows > 0) {
-    echo "<table border='1'>
-            <tr>
-                <th>Product ID</th>
-                <th>Product Name</th>
-                <th>Category ID</th>
-                <th>Brand ID</th>
-                <th>Product Price</th>
-                <th>Product Price (New)</th>
-                <th>Description</th>
-                <th>Product Image</th>
-            </tr>";
-
-    // Lặp qua các bản ghi và hiển thị
-    while($row = $result->fetch_assoc()) {
-        echo "<tr>
-                <td>" . $row["product_id"] . "</td>
-                <td>" . $row["product_name"] . "</td>
-                <td>" . $row["category_id"] . "</td>
-                <td>" . $row["brand_id"] . "</td>
-                <td>" . $row["product_price"] . "</td>
-                <td>" . $row["product_price_new"] . "</td>
-                <td>" . $row["product_desc"] . "</td>
-                <td><img src='" . $row["product_img"] . "' alt='" . $row["product_name"] . "' width='100'></td>
-              </tr>";
-    }
-    echo "</table>";
-} else {
-    echo "0 results";
-}
-
-$conn->close();
+$product = new Product();
+$product_list = $product->get_all_product(); // Lấy danh sách sản phẩm
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách sản phẩm</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="admin-content-right">
+        <div class="admin-content-right-product_list">
+            <h1>Danh sách sản phẩm</h1>
+            <table border="1" cellspacing="0" cellpadding="10">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Danh mục</th>
+                        <th>Giá</th>
+                        <th>Giá khuyến mãi</th>
+                        <th>Hình ảnh</th>
+                        <th>Mô tả</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    if ($product_list) {
+                        while ($row = $product_list->fetch_assoc()) {
+                            ?>
+                            <tr>
+                                <td><?php echo $row['product_id']; ?></td>
+                                <td><?php echo $row['product_name']; ?></td>
+                                <td><?php echo $row['category_name']; ?></td>
+                                <td><?php echo number_format($row['product_price'], 0, ',', '.'); ?> VNĐ</td>
+                                <td><?php echo number_format($row['product_price_new'], 0, ',', '.'); ?> VNĐ</td>
+                                <td><img src="../view/image/<?php echo $row['product_img']; ?>" alt="" width="80"></td>
+                                <td style="width: 200px; overflow: hidden;"><?php echo $row['product_desc']; ?></td>
+                                <td>
+                                    <button class="btn-edit" onclick="window.location.href='productedit.php?product_id=<?php echo $row['product_id']; ?>'">Sửa</button> | 
+                                    <button class="btn-delete" onclick="return confirm('Bạn có chắc chắn muốn xóa?') ? window.location.href='productdelete.php?product_id=<?php echo $row['product_id']; ?>' : false;">Xóa</button>
+                                </td>
+
+
+                            </tr>
+                            <?php
+                        }
+                    } else {
+                        echo "<tr><td colspan='8'>Không có sản phẩm nào</td></tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

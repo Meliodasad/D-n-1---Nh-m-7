@@ -213,8 +213,8 @@ margin-top: 20px;
 /* product add */
 .admin-content-right {
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 2000px;
+    margin: 0 50px;
     padding: 20px;
     background-color: #454545;
     border-radius: 8px;
@@ -370,4 +370,91 @@ form button {
 
 .admin-content-right-category-edit button:hover {
     background-color: #161616;
+}
+
+.admin-content-right-product_list {
+    margin: 20px auto;
+    width: 90%;
+    font-family: Arial, sans-serif;
+}
+
+.admin-content-right-product_list table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    margin-top: 20px;
+}
+
+
+.admin-content-right-product_list table th,
+.admin-content-right-product_list table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    vertical-align: middle;
+}
+
+.admin-content-right-product_list table th {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.admin-content-right-product_list table tr:nth-child(even) {
+    background-color: #4b4b4b;
+}
+
+.admin-content-right-product_list table tr:hover {
+    background-color: #4b4b4b;
+}
+
+.admin-content-right-product_list table img {
+    border-radius: 5px;
+    width: 50px;
+    height: auto;
+}
+
+.admin-content-right-product_list table a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.admin-content-right-product_list table a:hover {
+    color: #676767;
+    text-decoration: underline;
+}
+button.btn-edit, button.btn-delete {
+    display: inline-block;
+    padding: 8px 15px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+/* Style for "Sửa" button */
+button.btn-edit {
+    background-color: #d8d8d8; /* Green */
+    color: white;
+}
+
+button.btn-edit:hover {
+    background-color: #282828; /* Darker green */
+}
+
+/* Style for "Xóa" button */
+button.btn-delete {
+    background-color: #d8d8d8; /* Red */
+    color: white;
+}
+
+button.btn-delete:hover {
+    background-color: #282828; /* Darker red */
+}
+
+/* Optional: Style for both buttons when clicked (active state) */
+button.btn-edit:active, button.btn-delete:active {
+    transform: scale(0.98); /* Slightly shrink the button when clicked */
 }
