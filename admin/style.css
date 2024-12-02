@@ -412,7 +412,7 @@ button.btn-edit, button.btn-delete {
 }
 
 button.btn-edit {
-    background-color: #d8d8d8;
+    background-color: #8c8c8c;
     color: white;
 }
 
@@ -421,7 +421,7 @@ button.btn-edit:hover {
 }
 
 button.btn-delete {
-    background-color: #d8d8d8; 
+    background-color: #8c8c8c; 
     color: white;
 }
 
