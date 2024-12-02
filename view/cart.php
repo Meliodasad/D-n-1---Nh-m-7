@@ -203,8 +203,13 @@ if (isset($_POST['checkout'])) {
                             <td><p id="free_ship_info"></p></td>
                         </tr>
                     </table>
-                    <button type="submit" class="btn__update-cart" name="update_cart" onclick="alert('Đã cập nhật');">CẬP NHẬT GIỎ HÀNG</button>
-                    <button type="submit" class="btn__checkout" name="checkout">THANH TOÁN</button>
+                    <div class="cart-content-right-button">
+                        
+                        <form method="POST" action="">
+                            <a href="product.php"><button type="button">Tiếp tục mua sắm</button></a>
+                            <a href=""><button type="submit" name="checkout">Thanh Toán</button></a>
+                        </form>
+                    </div>
                 </div>
                 <?php else: ?>
                 <p>Giỏ hàng trống.</p>
