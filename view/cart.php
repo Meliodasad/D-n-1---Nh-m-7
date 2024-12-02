@@ -12,11 +12,17 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 $user_id = $_SESSION['user_id'];
+
 if (isset($_GET['remove'])) {
     $cart_id = intval($_GET['remove']);
-    $sql_delete = "DELETE FROM tbl_cart WHERE cart_id = :cart_id AND user_id = :user_id";
-    $stmt_delete = $conn->prepare($sql_delete);
-    $stmt_delete->execute([':cart_id' => $cart_id, ':user_id' => $user_id]);
+    $sql_delete_payment = "DELETE FROM tbl_payment WHERE cart_id = :cart_id";
+    $stmt_delete_payment = $conn->prepare($sql_delete_payment);
+    $stmt_delete_payment->execute([':cart_id' => $cart_id]);
+
+    $sql_delete_cart = "DELETE FROM tbl_cart WHERE cart_id = :cart_id AND user_id = :user_id";
+    $stmt_delete_cart = $conn->prepare($sql_delete_cart);
+    $stmt_delete_cart->execute([':cart_id' => $cart_id, ':user_id' => $user_id]);
+
     header("Location: cart.php");
     exit;
 }
@@ -46,6 +52,7 @@ foreach ($cart_items as $cart) {
 
 $total_price_formatted = number_format($total_price);
 $total_quantity_formatted = number_format($total_quantity);
+
 if (isset($_POST['checkout'])) {
     if ($total_price == 0) {
         echo "<script>alert('Vui lòng chọn sản phẩm để thanh toán.');</script>";
@@ -191,30 +198,19 @@ if (isset($_POST['checkout'])) {
                             <td>TỔNG TIỀN HÀNG</td>
                             <td><p id="total_price" style="font-weight: bold; font-size: 20px; "><?php echo $total_price_formatted; ?> <sup>đ</sup></p></td>
                         </tr>
+                        <tr>
+                            <td>MIỄN PHÍ SHIP</td>
+                            <td><p id="free_ship_info"></p></td>
+                        </tr>
                     </table>
-                    <div class="cart-content-right-text">
-                        <p id="free_ship_info" style="font-weight: bold;">
-                            <?php if ($total_price >= 3000000): ?>
-                                Bạn đã được miễn phí ship!
-                            <?php else: ?>
-                                Mua thêm <span style="font-size: 18px;"><?php echo number_format(3000000 - $total_price); ?>₫</span> để được miễn phí ship!
-                            <?php endif; ?>
-                        </p>
-                    </div>
-                    <div class="cart-content-right-button">
-                        
-                        <form method="POST" action="">
-                            <a href="product.php"><button type="button">Tiếp tục mua sắm</button></a>
-                            <a href=""><button type="submit" name="checkout">Thanh Toán</button></a>
-                        </form>
-                    </div>
+                    <button type="submit" class="btn__update-cart" name="update_cart" onclick="alert('Đã cập nhật');">CẬP NHẬT GIỎ HÀNG</button>
+                    <button type="submit" class="btn__checkout" name="checkout">THANH TOÁN</button>
                 </div>
                 <?php else: ?>
-                    <p>Giỏ hàng của bạn chưa có sản phẩm nào.</p>
+                <p>Giỏ hàng trống.</p>
                 <?php endif; ?>
             </div>
         </div>
     </section>
-    <?php include 'footer.php'; ?>
 </body>
 </html>
