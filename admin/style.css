@@ -1,15 +1,14 @@
 
 body {
-    background-color: #ffffff; /* Đặt nền của trang thành màu đen */
-    color: white; /* Màu chữ trắng để dễ đọc trên nền tối */
+    background-color: #ffffff;
+    color: white;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
 
-/* Style cho phần tiêu đề */
 header {
-    background-color: #3b3b3b; /* Nền header đen hơn */
+    background-color: #3b3b3b;
     color: white;
     padding: 20px;
     text-align: center;
@@ -19,10 +18,9 @@ header h1 {
     margin: 0;
 }
 
-/* Style cho phần nội dung chính */
 .admin-content-right {
     margin: 20px;
-    background-color: #444; /* Nền của phần nội dung chính là màu xám đậm */
+    background-color: #444;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -33,7 +31,6 @@ header h1 {
     margin-bottom: 20px;
 }
 
-/* Style cho bảng danh mục */
 .admin-content-right-cartegory-list table {
     width: 1000px;
     margin: 0 100px;
@@ -42,28 +39,26 @@ header h1 {
 }
 
 .admin-content-right-cartegory-list table th, .admin-content-right-cartegory-list table td {
-    padding: 10px 12px; /* Giảm padding để bảng nhỏ lại */
+    padding: 10px 12px; 
     border: 1px solid #ddd;
     text-align: center;
-    font-size: 14px; /* Giảm kích thước font chữ */
+    font-size: 14px; 
 }
 
 .admin-content-right-cartegory-list table th {
-    background-color: #222; /* Nền bảng thậm chí đen hơn */
+    background-color: #222;
     color: white;
     font-weight: bold;
 }
 
-/* Style cho hàng trong bảng */
 .admin-content-right-cartegory-list table tr:nth-child(even) {
-    background-color: #555; /* Nền các hàng chẵn màu xám đậm */
+    background-color: #555;
 }
 
 .admin-content-right-cartegory-list table tr:hover {
-    background-color: #666; /* Nền khi hover vào hàng */
+    background-color: #666;
 }
 
-/* Style cho các nút sửa, xoá */
 .admin-content-right-cartegory-list table td a {
     padding: 6px 12px;
     background-color: #cdcdcd;
@@ -80,14 +75,12 @@ header h1 {
     background-color: #000000;
 }
 
-/* Style cho thông báo không có dữ liệu */
+
 .admin-content-right-cartegory-list table td[colspan='4'] {
     text-align: center;
-    color: #bbb; /* Màu chữ sáng hơn một chút */
+    color: #bbb; 
     font-style: italic;
 }
-
-
 
 .admin-content {
     display: flex;
@@ -142,30 +135,30 @@ header h1 {
 }
 
 .admin-content-right-cartegory-add input {
-    width: 100%; /* Chiếm toàn chiều rộng */
-    padding: 10px; /* Khoảng cách trong ô */
-    margin-bottom: 15px; /* Khoảng cách dưới */
-    border: 1px solid #ccc; /* Viền màu xám nhạt */
-    border-radius: 5px; /* Bo góc */
-    font-size: 16px; /* Kích thước chữ */
-    box-sizing: border-box; /* Không tràn khung */
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
 }
 
 .admin-content-right-cartegory-add input:focus {
-    border-color: #4e4e4e; /* Viền xanh khi focus */
-    outline: none; /* Bỏ viền mặc định */
-    box-shadow: 0 0 5px #3d3d3d; /* Hiệu ứng ánh sáng */
+    border-color: #4e4e4e;
+    outline: none;
+    box-shadow: 0 0 5px #3d3d3d;
 }
 
 .admin-content-right-cartegory-add button {
-    background-color: #bababa; /* Màu xanh lá nổi bật */
-    color: rgb(0, 0, 0); /* Màu chữ trắng */
-    padding: 10px 20px; /* Khoảng cách trong nút */
-    border: none; /* Bỏ viền */
-    border-radius: 5px; /* Bo tròn góc */
-    cursor: pointer; /* Con trỏ thành tay */
-    font-size: 16px; /* Kích thước chữ */
-    transition: background-color 0.3s ease; /* Hiệu ứng chuyển màu */
+    background-color: #bababa;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
 }
 
 .admin-content-right-cartegory-add button:hover {
@@ -179,11 +172,11 @@ margin-top: 20px;
 }
 
 .admin-content-right-product-add input,select{
-    width: 200px; /* Chiếm toàn chiều rộng */
+    width: 200px;
     height: 30px;
-    display: block; /* Chuyển khóa lớp inline-block */
-    margin: 6px 0 12px; /* Khoảng cách dưới */
-    padding-left: 12px; /* Khoảng cách trái */
+    display: block; 
+    margin: 6px 0 12px;
+    padding-left: 12px;
 } 
 
 .admin-content-right-product-add input textarea{ 
@@ -213,29 +206,26 @@ margin-top: 20px;
 /* product add */
 .admin-content-right {
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 2000px;
+    margin: 0 50px;
     padding: 20px;
-    background-color: #fff;
+    background-color: #454545;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Title section */
 .admin-content-right-product_add h1 {
     text-align: center;
-    color: #333;
+    color: #ffffff;
     font-size: 24px;
     margin-bottom: 20px;
 }
 
-/* Form styling */
 form {
     display: grid;
     gap: 15px;
 }
 
-/* Input fields */
 input[type="text"],
 input[type="file"],
 textarea,
@@ -247,29 +237,25 @@ select {
     border-radius: 5px;
 }
 
-/* Focus styling */
 input[type="text"]:focus,
 textarea:focus,
 select:focus {
-    border-color: #66cc66;
+    border-color: #585858;
     outline: none;
 }
 
-/* Labels */
 label {
     font-size: 16px;
-    color: #555;
+    color: #ebebeb;
 }
 
-/* Error styling for required fields */
 span {
     color: red;
 }
 
-/* Button styling */
 button[type="submit"] {
     padding: 10px 20px;
-    background-color: #66cc66;
+    background-color: #676767;
     color: white;
     font-size: 16px;
     border: none;
@@ -278,51 +264,43 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #4caf50;
+    background-color: #151515;
 }
 
-/* Select box styling */
 select {
     background-color: #fff;
     cursor: pointer;
 }
 
-/* Make textarea more spacious */
 textarea {
     height: 150px;
 }
 
-/* File input specific styling */
 input[type="file"] {
     border: none;
     padding: 5px;
 }
 
-/* Multiple file input styling */
 input[type="file"][multiple] {
     padding: 5px;
 }
 
-/* Grid layout for the form */
 form {
     display: grid;
     gap: 15px;
 }
 
-/* Ensure that large form elements don't stretch too much */
 form input,
 form textarea,
 form select {
     width: 100%;
 }
 
-/* Add spacing between the form and buttons */
 form button {
     align-self: center;
     margin-top: 15px;
 }
 
-/* Make the form responsive for smaller screens */
 @media (max-width: 768px) {
     .admin-content-right {
         padding: 15px;
@@ -331,4 +309,127 @@ form button {
     form {
         grid-template-columns: 1fr;
     }
+}
+
+.admin-content-right-category-edit {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #373737;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-content-right-category-edit h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.admin-content-right-category-edit form {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-content-right-category-edit input {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.admin-content-right-category-edit button {
+    padding: 10px;
+    background-color: #525252;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.admin-content-right-category-edit button:hover {
+    background-color: #161616;
+}
+
+.admin-content-right-product_list {
+    margin: 20px auto;
+    width: 90%;
+    font-family: Arial, sans-serif;
+}
+
+.admin-content-right-product_list table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.admin-content-right-product_list table th,
+.admin-content-right-product_list table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    vertical-align: middle;
+}
+
+.admin-content-right-product_list table th {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.admin-content-right-product_list table tr:nth-child(even) {
+    background-color: #4b4b4b;
+}
+
+.admin-content-right-product_list table tr:hover {
+    background-color: #4b4b4b;
+}
+
+.admin-content-right-product_list table img {
+    border-radius: 5px;
+    width: 50px;
+    height: auto;
+}
+
+.admin-content-right-product_list table a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.admin-content-right-product_list table a:hover {
+    color: #676767;
+    text-decoration: underline;
+}
+button.btn-edit, button.btn-delete {
+    display: inline-block;
+    padding: 8px 15px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+button.btn-edit {
+    background-color: #8c8c8c;
+    color: white;
+}
+
+button.btn-edit:hover {
+    background-color: #282828;
+}
+
+button.btn-delete {
+    background-color: #8c8c8c; 
+    color: white;
+}
+
+button.btn-delete:hover {
+    background-color: #282828;
+}
+
+
+button.btn-edit:active, button.btn-delete:active {
+    transform: scale(0.98);
 }

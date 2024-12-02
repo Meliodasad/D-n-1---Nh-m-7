@@ -1,7 +1,7 @@
 <?php
 session_start();
-session_unset();  // Xóa các biến session
-session_destroy(); // Hủy session
-header('Location: index.php'); // Chuyển hướng về trang chủ
+session_unset();
+session_destroy();
+header('Location: index.php');
 exit;
 ?>

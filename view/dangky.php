@@ -1,9 +1,7 @@
 <?php
-// Bao gồm file cấu hình kết nối PDO
 include('config.php');
 include 'header.php';
 
-// Xử lý đăng ký
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username'] ?? '');
     $email = trim($_POST['email'] ?? '');
@@ -11,23 +9,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $confirm_password = $_POST['confirm-password'] ?? '';
     $phone = trim($_POST['phone'] ?? '');
 
-    // Kiểm tra nhập đầy đủ thông tin
     if (!empty($username) && !empty($email) && !empty($password) && !empty($confirm_password) && !empty($phone)) {
         if ($password === $confirm_password) {
-            // Kiểm tra email đã tồn tại chưa
             $stmt = $conn->prepare("SELECT id FROM tbl_user WHERE email = ?");
             $stmt->execute([$email]);
 
             if ($stmt->rowCount() > 0) {
                 echo "<script>alert('Email đã tồn tại!');</script>";
             } else {
-                // Lưu mật khẩu dưới dạng văn bản thuần túy (không mã hóa)
-                // Không mã hóa mật khẩu ở đây
-
-                // Gán giá trị role mặc định là 2 (người dùng) hoặc có thể thay đổi theo yêu cầu
-                $role = 2;  // Đổi giá trị này thành 1 nếu muốn tạo tài khoản admin
-
-                // Thêm tài khoản vào cơ sở dữ liệu
+                $role = 2;
                 $stmt = $conn->prepare("INSERT INTO tbl_user (username, email, password, phone, role) VALUES (?, ?, ?, ?, ?)");
                 if ($stmt->execute([$username, $email, $password, $phone, $role])) {
                     echo "<script>alert('Đăng ký thành công!');</script>";

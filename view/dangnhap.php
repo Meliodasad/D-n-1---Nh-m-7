@@ -11,8 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($stmt->rowCount() > 0) {
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            // Kiểm tra mật khẩu trực tiếp (không sử dụng password_verify)
             if ($password === $user['password']) {
                 session_start();
                 $_SESSION = [

@@ -25,8 +25,6 @@ session_start();
             <a href="contact.php">Liên hệ</a>
             
         </nav>
-
-        <!-- Tìm kiếm -->
         <div class="search-bar">
     <form method="GET" action="search.php">
         <input type="text" id="search-input" name="query" placeholder="Tìm kiếm...">
@@ -67,7 +65,7 @@ body {
     display: flex;
     align-items: center;
     gap: 20px;
-    flex-shrink: 0; /* Ngăn co lại */
+    flex-shrink: 0;
 }
 
 .user-cart span {
@@ -109,7 +107,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: nowrap; /* Ngăn xuống dòng */
+    flex-wrap: nowrap;
 }
 
 
@@ -120,7 +118,7 @@ body {
 nav {
     display: flex;
     gap: 20px;
-    flex-shrink: 0; /* Ngăn co lại */
+    flex-shrink: 0;
 }
 
 nav a {
@@ -139,7 +137,7 @@ nav a:hover {
     display: flex;
     align-items: center;
     gap: 10px;
-    flex-shrink: 0; /* Ngăn co lại */
+    flex-shrink: 0;
 }
 
 .search-bar input[type="text"] {

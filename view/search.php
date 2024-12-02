@@ -10,48 +10,45 @@ require 'config.php';
     <link rel="stylesheet" href="css/mainstyle.css">
 </head>
 <body>
-<?php
+    <?php
         include('header.php');
     ?>
 
     <section class="main-container">
-    <div class="highlighted-products">
-        <h2>Sản phẩm tìm kiếm</h2>
-        <div class="product-list">
-<?php
-// Kiểm tra xem có truy vấn 'query' hay không
-if (isset($_GET['query']) && !empty(trim($_GET['query']))) {
-    $query = trim($_GET['query']); // Lấy dữ liệu từ form
-    $sql = "SELECT product_id, product_name, product_img, product_price 
-            FROM tbl_product 
-            WHERE product_name LIKE :query";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindValue(':query', '%' . $query . '%', PDO::PARAM_STR);
-    $stmt->execute();
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    // Kiểm tra nếu có sản phẩm được tìm thấy
-    if (!empty($results)) {
-        foreach ($results as $product) {
-            echo '<div class="product">';
-            echo '<a href="product_detail.php?id=' . htmlspecialchars($product['product_id']) . '">';
-            echo '<img src="' . htmlspecialchars($product['product_img']) . '" alt="' . htmlspecialchars($product['product_name']) . '">';
-            echo '</a>';
-            echo '<h3>' . htmlspecialchars($product['product_name']) . '</h3>';
-            echo '<p>' . number_format($product['product_price'], 0, ',', '.') . '₫</p>';
-            echo '<a href="cart.php?add=' . htmlspecialchars($product['product_id']) . '"><button>Thêm vào giỏ hàng</button></a>';
-            echo '</div>';
-        }
-    } else {
-        echo '<p>Không tìm thấy sản phẩm phù hợp.</p>';
-    }
-} else {
-    echo '<p>Vui lòng nhập từ khóa tìm kiếm.</p>';
-}
-?>
-</div>
-</div>
-</section>
+        <div class="highlighted-products">
+            <h2>Sản phẩm tìm kiếm</h2>
+            <div class="product-list">
+                <?php
+                if (isset($_GET['query']) && !empty(trim($_GET['query']))) {
+                    $query = trim($_GET['query']);
+                    $sql = "SELECT product_id, product_name, product_img, product_price 
+                            FROM tbl_product 
+                            WHERE product_name LIKE :query";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bindValue(':query', '%' . $query . '%', PDO::PARAM_STR);
+                    $stmt->execute();
+                    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    if (!empty($results)) {
+                        foreach ($results as $product) {
+                            echo '<div class="product">';
+                            echo '<a href="product_detail.php?id=' . htmlspecialchars($product['product_id']) . '">';
+                            echo '<img src="' . htmlspecialchars($product['product_img']) . '" alt="' . htmlspecialchars($product['product_name']) . '">';
+                            echo '</a>';
+                            echo '<h3>' . htmlspecialchars($product['product_name']) . '</h3>';
+                            echo '<p>' . number_format($product['product_price'], 0, ',', '.') . '₫</p>';
+                            echo '<a href="cart.php?add=' . htmlspecialchars($product['product_id']) . '"><button>Thêm vào giỏ hàng</button></a>';
+                            echo '</div>';
+                        }
+                    } else {
+                        echo '<p>Không tìm thấy sản phẩm phù hợp.</p>';
+                    }
+                } else {
+                    echo '<p>Vui lòng nhập từ khóa tìm kiếm.</p>';
+                }
+                ?>
+            </div>
+        </div>
+    </section>
 
     <section class="footer">
         <div class="footer-container">

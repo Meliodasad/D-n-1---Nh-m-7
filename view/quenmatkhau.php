@@ -6,15 +6,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email'] ?? '');
     $newPassword = $_POST['new-password'] ?? '';
     $confirmPassword = $_POST['confirm-password'] ?? '';
-
     if (!empty($email) && !empty($newPassword) && !empty($confirmPassword)) {
         if ($newPassword === $confirmPassword) {
-            // Kiểm tra email có tồn tại không
             $stmt = $conn->prepare("SELECT id FROM tbl_user WHERE email = ?");
             $stmt->execute([$email]);
 
             if ($stmt->rowCount() > 0) {
-                // Cập nhật mật khẩu (lưu ở dạng thuần)
                 $stmt = $conn->prepare("UPDATE tbl_user SET password = ? WHERE email = ?");
                 if ($stmt->execute([$newPassword, $email])) {
                     echo "<script>alert('Mật khẩu đã được thay đổi thành công!');</script>";
