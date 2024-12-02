@@ -1,18 +1,18 @@
 <?php
-// Bao gồm các tệp cần thiết
+
 require_once 'database.php';  
 include 'admin/class/cartegory_Class.php';  
 include "header.html";  
 include 'slider.html';
 
-// Kiểm tra nếu có `category_id` trong URL
+
 if (isset($_GET['category_id'])) {
     $category_id = $_GET['category_id'];
 
-    // Khởi tạo đối tượng Category
+    
     if (class_exists('Category')) {
         $category = new Category();
-        // Lấy dữ liệu danh mục
+        
         $category_data = $category->get_category($category_id);
 
         if (!$category_data) {
@@ -20,7 +20,7 @@ if (isset($_GET['category_id'])) {
             exit();
         }
 
-        // Nếu người dùng gửi form POST để cập nhật
+        
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $category_name = $_POST['category_name'];
 

@@ -1,7 +1,5 @@
 <?php
-
 $host = 'localhost';
-
 $dbname = 'web_duan1'; 
 $username = 'root'; 
 $password = 'khaikhai';

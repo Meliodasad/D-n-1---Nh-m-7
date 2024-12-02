@@ -7,7 +7,7 @@ $product = new Product();
 
 if (isset($_GET['product_id'])) {
     $product_id = $_GET['product_id'];
-    $product_data = $product->get_product_by_id($product_id); // Lấy dữ liệu sản phẩm theo ID
+    $product_data = $product->get_product_by_id($product_id);
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

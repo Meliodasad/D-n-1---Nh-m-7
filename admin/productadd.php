@@ -12,18 +12,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $product_price_new = $_POST['product_price_new'];
     $product_desc = $_POST['product_desc'];
 
-    // Upload ảnh chính
     $product_img = $_FILES['product_img']['name'];
     $product_img_tmp = $_FILES['product_img']['tmp_name'];
-    $upload_dir = "../view/image/";  // Thư mục image trong thư mục view
+    $upload_dir = "../view/image/";  
     move_uploaded_file($product_img_tmp, $upload_dir . $product_img);
 
-    // Thêm dữ liệu vào bảng
     $insert_product = $product->insert_product(
         $product_name,
         $category_id,
         $product_price,
-        $product_price_new, // Kiểm tra kiểu dữ liệu và giá trị
+        $product_price_new,
         $product_desc,
         $product_img
     );
@@ -78,9 +76,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label for="">Ảnh sản phẩm <span style="color: red;">*</span></label>
             <input name="product_img" required type="file">
             
-            <!-- <label for="">Ảnh mô tả <span style="color: red;">*</span></label>
-            <input name="product_img_desc[]" required multiple type="file">
-             -->
             <button type="submit">Thêm</button>
         </form>
     </div>

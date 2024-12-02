@@ -22,12 +22,12 @@ class Category {
     public function get_category($category_id) {
         $query = "SELECT * FROM tbl_category WHERE category_id = '$category_id'";
         $result = $this->db->select($query);
-        return $result ? $result->fetch_assoc() : null; // Trả về null nếu không có dữ liệu
+        return $result ? $result->fetch_assoc() : null; 
     }
 
     public function update_category($category_name, $category_id) {
         $query = "UPDATE tbl_category SET category_name = '$category_name' WHERE category_id = '$category_id'";
-        return $this->db->update($query); // Sử dụng `update` thay vì `select`
+        return $this->db->update($query); 
     }
 
     public function delete_category($category_id) {

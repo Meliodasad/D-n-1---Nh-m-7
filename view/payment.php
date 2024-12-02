@@ -6,13 +6,11 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Kiểm tra nếu người dùng đã đăng nhập
 if (!isset($_SESSION['user_id'])) {
     header('Location: dangnhap.html');
     exit();
 }
 
-// Lấy thông tin người dùng và giỏ hàng
 $user_id = $_SESSION['user_id'];
 $query_cart = "SELECT * FROM tbl_cart WHERE user_id = :user_id";
 $stmt_cart = $conn->prepare($query_cart);
@@ -20,16 +18,13 @@ $stmt_cart->bindParam(':user_id', $user_id, PDO::PARAM_INT);
 $stmt_cart->execute();
 $cart_items = $stmt_cart->fetchAll(PDO::FETCH_ASSOC);
 
-// Xử lý thanh toán
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $payment_method = $_POST['payment_method'] ?? '';
     $delivery_method = $_POST['delivery_method'] ?? '';
     $selected_carts = $_POST['selected_cart'] ?? [];
-
     if ($payment_method && $delivery_method && !empty($selected_carts)) {
         try {
             $conn->beginTransaction();
-
             foreach ($selected_carts as $cart_id) {
                 $query_payment = "INSERT INTO tbl_payment (user_id, cart_id, payment_method, delivery_method, status) 
                                   VALUES (:user_id, :cart_id, :payment_method, :delivery_method, 'Chờ xử lý')";
@@ -40,13 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     ':payment_method' => $payment_method,
                     ':delivery_method' => $delivery_method
                 ]);
-
-                // Xóa sản phẩm khỏi giỏ hàng
                 $query_delete_cart = "DELETE FROM tbl_cart WHERE cart_id = :cart_id AND user_id = :user_id";
                 $stmt_delete_cart = $conn->prepare($query_delete_cart);
                 $stmt_delete_cart->execute([':cart_id' => $cart_id, ':user_id' => $user_id]);
             }
-
             $conn->commit();
             echo "<script>alert('Thanh toán thành công!'); window.location.href = 'success.php';</script>";
         } catch (Exception $e) {

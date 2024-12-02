@@ -4,7 +4,7 @@ include 'slider.html';
 include 'class/product_class.php';
 
 $product = new Product();
-$product_list = $product->get_all_product(); // Lấy danh sách sản phẩm
+$product_list = $product->get_all_product();
 ?>
 
 <!DOCTYPE html>

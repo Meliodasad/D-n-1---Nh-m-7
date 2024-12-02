@@ -1,7 +1,6 @@
-let productCount = 8; // Số sản phẩm ban đầu hiển thị
-const products = document.querySelectorAll('.product-list .product'); // Lấy tất cả các sản phẩm
+let productCount = 8;
+const products = document.querySelectorAll('.product-list .product');
 
-// Ẩn các sản phẩm không cần thiết
 function hideExtraProducts() {
     for (let i = 8; i < products.length; i++) {
         products[i].style.display = 'none';
@@ -9,19 +8,15 @@ function hideExtraProducts() {
 }
 
 function loadMoreProducts() {
-    productCount += 8; // Mỗi lần nhấn, hiển thị thêm 8 sản phẩm
+    productCount += 8;
     if (productCount >= products.length) {
-        document.getElementById('load-more').style.display = 'none'; // Ẩn nút nếu không còn sản phẩm để hiển thị
+        document.getElementById('load-more').style.display = 'none'; 
     }
     for (let i = 0; i < productCount; i++) {
         products[i].style.display = 'block';
     }
 }
-
-// Gọi hàm ẩn sản phẩm ban đầu
 hideExtraProducts();
-
-// chi tiết product js
 
 document.querySelector('.quantity-btn.minus').addEventListener('click', () => {
     const quantityInput = document.getElementById('quantity');

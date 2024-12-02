@@ -1,7 +1,6 @@
 <?php
 require_once 'config.php'; 
 
-
 $category_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 $price_range = isset($_GET['price_range']) ? $_GET['price_range'] : null;
 
