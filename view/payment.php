@@ -91,6 +91,20 @@ if (count($cart_items) > 0) {
         <div class="container">
             <form method="POST" action="">
                 <div class="payment-content">
+                <div class="payment-top-wrap">
+                    <div class="payment-top">
+                        <div class="payment-top-payment payment-top-item">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="payment-top-payment payment-top-item">
+                            <i class="fas fa-money-check-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <form method="POST" action="">
+            <div class="container">
+                <div class="payment-content row">
                     <div class="payment-content-left">
                         <p style="font-weight: bold; font-size: 20px;">Sản phẩm trong giỏ hàng</p>
                         <div class="payment-table">

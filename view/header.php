@@ -20,9 +20,9 @@ session_start();
         <nav>
             <a href="index.php">Trang chủ</a>
             <a href="product.php">Sản phẩm</a>
-            <a href="#">Giới thiệu</a>
-            <a href="#">Tư Vấn</a>
-            <a href="#">Liên hệ</a>
+            <a href="about.php">Giới thiệu</a>
+            <a href="consulting.php">Tư Vấn</a>
+            <a href="contact.php">Liên hệ</a>
             
         </nav>
         <div class="search-bar">
