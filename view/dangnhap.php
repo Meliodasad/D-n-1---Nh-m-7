@@ -19,7 +19,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     'email'   => $email,
                 ];
 
-                header("Location: index.php");
+                // Kiểm tra role, nếu là 1 thì chuyển tới trang admin
+                if ($user['role'] == 1) {
+                    header("Location: /DuAn1/admin/index.php");  // Trang quản trị
+                } else {
+                    header("Location: index.php");  // Trang người dùng
+                }
                 exit();
             } else {
                 echo "<script>alert('Mật khẩu không đúng!');</script>";

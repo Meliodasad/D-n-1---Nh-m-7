@@ -45,6 +45,8 @@ session_start();
             
                 <i class="fas fa-shopping-cart"></i> Giỏ hàng
             </a>
+            <a href="donhang.php">Đơn Hàng</a>
+
             <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 1): ?>
                 <a href="/DuAn1/admin/index.php">Vào trang quản trị</a>
             <?php endif; ?>

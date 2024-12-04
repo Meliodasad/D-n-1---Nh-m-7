@@ -87,14 +87,19 @@ $sale_products = $conn->query($sql_on_sale)->fetchAll(PDO::FETCH_ASSOC);
         })
         .then(response => response.json())
         .then(data => {
+            console.log(data); // Debug dữ liệu trả về
             if (data.success) {
                 alert('Sản phẩm đã được thêm vào giỏ hàng!');
             } else {
                 alert(data.message || 'Thêm vào giỏ hàng thất bại!');
             }
         })
-        .catch(error => console.error('Lỗi:', error));
+        .catch(error => {
+            console.error('Có lỗi xảy ra:', error);
+            alert('Có lỗi xảy ra, vui lòng thử lại!');
+        });
     }
 </script>
+
 </body>
 </html>

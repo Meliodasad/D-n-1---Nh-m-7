@@ -20,24 +20,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($stmt_product->rowCount() > 0) {
             $product = $stmt_product->fetch(PDO::FETCH_ASSOC);
 
-            $sql_cart = "SELECT * FROM tbl_cart WHERE cart_name = :cart_name AND user_id = :user_id";
+            // Kiểm tra sản phẩm đã có trong giỏ hàng chưa
+            $sql_cart = "SELECT * FROM tbl_cart WHERE product_id = :product_id AND user_id = :user_id";
             $stmt_cart = $conn->prepare($sql_cart);
-            $stmt_cart->execute(['cart_name' => $product['product_name'], 'user_id' => $user_id]);
+            $stmt_cart->execute(['product_id' => $product['product_id'], 'user_id' => $user_id]);
 
             if ($stmt_cart->rowCount() > 0) {
-                $sql_update = "UPDATE tbl_cart SET cart_quantity = cart_quantity + 1 
-                               WHERE cart_name = :cart_name AND user_id = :user_id";
+                // Cập nhật số lượng nếu sản phẩm đã có trong giỏ
+                $sql_update = "UPDATE tbl_cart SET cart_quantity = cart_quantity + 1 WHERE product_id = :product_id AND user_id = :user_id";
                 $stmt_update = $conn->prepare($sql_update);
                 $stmt_update->execute([
-                    'cart_name' => $product['product_name'],
+                    'product_id' => $product['product_id'],
                     'user_id' => $user_id
                 ]);
             } else {
-                $sql_insert = "INSERT INTO tbl_cart (user_id, cart_img, cart_name, cart_quantity, cart_price) 
-                               VALUES (:user_id, :cart_img, :cart_name, 1, :cart_price)";
+                // Thêm sản phẩm mới vào giỏ hàng
+                $sql_insert = "INSERT INTO tbl_cart (user_id, product_id, cart_img, cart_name, cart_quantity, cart_price) 
+                               VALUES (:user_id, :product_id, :cart_img, :cart_name, 1, :cart_price)";
                 $stmt_insert = $conn->prepare($sql_insert);
                 $stmt_insert->execute([
                     'user_id' => $user_id,
+                    'product_id' => $product['product_id'],
                     'cart_img' => $product['product_img'],
                     'cart_name' => $product['product_name'],
                     'cart_price' => $product['product_price']

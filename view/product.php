@@ -81,22 +81,27 @@ $categories = getCategories();
 
     <script src="js/product.js"></script>
     <script>
-        function addToCart(productId) {
-            fetch('add_to_cart.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ product_id: productId })
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert('Sản phẩm đã được thêm vào giỏ hàng!');
-                } else {
-                    alert(data.message || 'Thêm vào giỏ hàng thất bại!');
-                }
-            })
-            .catch(error => console.error('Lỗi:', error));
-        }
-    </script>
+    function addToCart(productId) {
+        fetch('add_to_cart.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ product_id: productId })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data); // Debug dữ liệu trả về
+            if (data.success) {
+                alert('Sản phẩm đã được thêm vào giỏ hàng!');
+            } else {
+                alert(data.message || 'Thêm vào giỏ hàng thất bại!');
+            }
+        })
+        .catch(error => {
+            console.error('Có lỗi xảy ra:', error);
+            alert('Có lỗi xảy ra, vui lòng thử lại!');
+        });
+    }
+</script>
+
 </body>
 </html>

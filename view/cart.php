@@ -13,20 +13,17 @@ if (!isset($_SESSION['user_id'])) {
 
 $user_id = $_SESSION['user_id'];
 
+// Xóa sản phẩm khỏi giỏ hàng
 if (isset($_GET['remove'])) {
     $cart_id = intval($_GET['remove']);
-    $sql_delete_payment = "DELETE FROM tbl_payment WHERE cart_id = :cart_id";
-    $stmt_delete_payment = $conn->prepare($sql_delete_payment);
-    $stmt_delete_payment->execute([':cart_id' => $cart_id]);
-
     $sql_delete_cart = "DELETE FROM tbl_cart WHERE cart_id = :cart_id AND user_id = :user_id";
     $stmt_delete_cart = $conn->prepare($sql_delete_cart);
     $stmt_delete_cart->execute([':cart_id' => $cart_id, ':user_id' => $user_id]);
-
     header("Location: cart.php");
     exit;
 }
 
+// Cập nhật số lượng sản phẩm trong giỏ
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cart_id']) && isset($_POST['quantity'])) {
     $cart_id = intval($_POST['cart_id']);
     $quantity = intval($_POST['quantity']);
@@ -35,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cart_id']) && isset($
         $stmt_update = $conn->prepare($sql_update);
         $stmt_update->execute([':quantity' => $quantity, ':cart_id' => $cart_id, ':user_id' => $user_id]);
     }
+    header("Location: cart.php");
     exit;
 }
 
@@ -217,5 +215,6 @@ if (isset($_POST['checkout'])) {
             </div>
         </div>
     </section>
+    <?php include 'footer.php'; ?>
 </body>
 </html>
