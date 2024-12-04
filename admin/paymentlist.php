@@ -3,23 +3,19 @@ include 'header.html';
 include 'slider.html';
 include_once "database.php";
 
-// Kết nối đến cơ sở dữ liệu
 $db = Database::getInstance(); 
 
-// Truy vấn lấy dữ liệu từ bảng `tbl_payment_detail`
 $query = "SELECT pd.detail_id, pd.order_id, pd.product_id, pd.product_name, pd.product_price, pd.product_quantity, pd.product_img, pd.status, pd.created_at, u.username AS user_name 
           FROM tbl_payment_detail pd
           JOIN tbl_payment p ON pd.order_id = p.id
-          JOIN tbl_user u ON p.user_id = u.id";
+          JOIN tbl_user u ON p.user_id = u.id
+          ORDER BY pd.created_at DESC";
 
 $result = $db->select($query);
 
-// Xử lý cập nhật trạng thái đơn hàng
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status'], $_POST['detail_id'])) {
-    $status = mysqli_real_escape_string($db->getConnection(), $_POST['status']); // Đảm bảo mã hóa
-    $detail_id = (int) $_POST['detail_id']; // Chuyển đổi id thành số nguyên
-
-    // Kiểm tra nếu trạng thái là hợp lệ
+    $status = mysqli_real_escape_string($db->getConnection(), $_POST['status']);
+    $detail_id = (int) $_POST['detail_id'];
     $valid_statuses = ['Chờ Xử Lý', 'Đang chuẩn bị', 'Đang giao', 'Đã giao'];
     if (in_array($status, $valid_statuses)) {
         $check_status_query = "SELECT status FROM tbl_payment_detail WHERE detail_id = ?";
@@ -81,20 +77,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status'], $_POST['deta
                         echo "<td>" . $row['user_name'] . "</td>";
                         echo "<td>" . $row['order_id'] . "</td>";
                         echo "<td>" . $row['product_id'] . "</td>";
-                        echo "<td><img src='" . $row['product_img'] . "' alt='Ảnh Sản Phẩm' width='100'></td>";
+                        echo "<td><img src='/Duan1/view/" . $row['product_img'] . "' alt='Ảnh Sản Phẩm' width='100'></td>";
                         echo "<td>" . $row['product_name'] . "</td>";
                         echo "<td>" . number_format($row['product_price']) . " VND</td>";
                         echo "<td>" . $row['product_quantity'] . "</td>";
 
                         echo "<td>";
-// Kiểm tra trạng thái hiện tại của đơn hàng
 if ($row['status'] == 'Đã giao') {
     echo "<span style='color: green;'>$row[status]</span>";
 } elseif ($row['status'] == 'Đã huỷ') {
-    // Thêm màu đỏ cho trạng thái 'Đã huỷ'
     echo "<span style='color: red;'>$row[status]</span>";
 } else {
-    // Hiển thị dropdown để thay đổi trạng thái nếu trạng thái không phải 'Đã huỷ' hoặc 'Đã giao'
     echo "<form method='POST' style='display:inline;'>";
     echo "<select name='status' onchange='this.form.submit()'>";
     $statuses = ['Chờ Xử Lý', 'Đang chuẩn bị', 'Đang giao', 'Đã giao'];

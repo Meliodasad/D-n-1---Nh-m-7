@@ -3,10 +3,8 @@ include 'header.html';
 include 'slider.html';
 include_once "database.php";
 
-// Kết nối đến cơ sở dữ liệu
 $db = Database::getInstance();
 
-// Truy vấn số lượng khách hàng đã mua hàng trong từng tháng
 $query = "
     SELECT
         YEAR(created_at) AS year,
@@ -41,7 +39,6 @@ $result = $db->select($query);
                 <tbody>
                     <?php
                     if ($result) {
-                        // Duyệt qua các dòng dữ liệu và hiển thị trong bảng
                         while ($row = $result->fetch_assoc()) {
                             echo "<tr>";
                             echo "<td>" . $row['year'] . "</td>";

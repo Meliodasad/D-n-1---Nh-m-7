@@ -18,12 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     'role'    => $user['role'],
                     'email'   => $email,
                 ];
-
-                // Kiểm tra role, nếu là 1 thì chuyển tới trang admin
                 if ($user['role'] == 1) {
-                    header("Location: /DuAn1/admin/index.php");  // Trang quản trị
+                    header("Location: /DuAn1/admin/index.php");
                 } else {
-                    header("Location: index.php");  // Trang người dùng
+                    header("Location: index.php");
                 }
                 exit();
             } else {

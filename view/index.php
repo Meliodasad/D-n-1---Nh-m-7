@@ -87,7 +87,7 @@ $sale_products = $conn->query($sql_on_sale)->fetchAll(PDO::FETCH_ASSOC);
         })
         .then(response => response.json())
         .then(data => {
-            console.log(data); // Debug dữ liệu trả về
+            console.log(data);
             if (data.success) {
                 alert('Sản phẩm đã được thêm vào giỏ hàng!');
             } else {

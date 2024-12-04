@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <h1>Sửa sản phẩm</h1>
         <form action="" method="POST" enctype="multipart/form-data">
             <?php if ($product_data) { 
-                $row = $product_data->fetch_assoc(); ?>
+                $row = $product_data;                ?>
                 <label for="">Tên sản phẩm</label>
                 <input name="product_name" required type="text" value="<?php echo $row['product_name']; ?>">
 
@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <textarea name="product_desc" required><?php echo $row['product_desc']; ?></textarea>
 
                 <label for="">Hình ảnh hiện tại</label>
-                <img src="uploads/<?php echo $row['product_img']; ?>" alt="" width="80">
+                <img src="/DuAn1/view/image/<?php echo $row['product_img']; ?>" alt="" width="80">
                 <input name="product_img" type="file">
 
                 <button type="submit">Cập nhật</button>

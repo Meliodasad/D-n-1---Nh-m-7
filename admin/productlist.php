@@ -43,7 +43,7 @@ $product_list = $product->get_all_product();
                                 <td><?php echo $row['category_name']; ?></td>
                                 <td><?php echo number_format($row['product_price'], 0, ',', '.'); ?> VNĐ</td>
                                 <td><?php echo number_format($row['product_price_new'], 0, ',', '.'); ?> VNĐ</td>
-                                <td><img src="../view/image/<?php echo $row['product_img']; ?>" alt="" width="80"></td>
+                                <td><img src="/DuAn1/view/<?php echo $row['product_img']; ?>" alt="" width="100"></td>
                                 <td style="width: 200px; overflow: hidden;"><?php echo $row['product_desc']; ?></td>
                                 <td>
                                     <button class="btn-edit" onclick="window.location.href='productedit.php?product_id=<?php echo $row['product_id']; ?>'">Sửa</button> | 

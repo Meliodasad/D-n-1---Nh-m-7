@@ -20,13 +20,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($stmt_product->rowCount() > 0) {
             $product = $stmt_product->fetch(PDO::FETCH_ASSOC);
 
-            // Kiểm tra sản phẩm đã có trong giỏ hàng chưa
             $sql_cart = "SELECT * FROM tbl_cart WHERE product_id = :product_id AND user_id = :user_id";
             $stmt_cart = $conn->prepare($sql_cart);
             $stmt_cart->execute(['product_id' => $product['product_id'], 'user_id' => $user_id]);
 
             if ($stmt_cart->rowCount() > 0) {
-                // Cập nhật số lượng nếu sản phẩm đã có trong giỏ
                 $sql_update = "UPDATE tbl_cart SET cart_quantity = cart_quantity + 1 WHERE product_id = :product_id AND user_id = :user_id";
                 $stmt_update = $conn->prepare($sql_update);
                 $stmt_update->execute([
@@ -34,7 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     'user_id' => $user_id
                 ]);
             } else {
-                // Thêm sản phẩm mới vào giỏ hàng
                 $sql_insert = "INSERT INTO tbl_cart (user_id, product_id, cart_img, cart_name, cart_quantity, cart_price) 
                                VALUES (:user_id, :product_id, :cart_img, :cart_name, 1, :cart_price)";
                 $stmt_insert = $conn->prepare($sql_insert);

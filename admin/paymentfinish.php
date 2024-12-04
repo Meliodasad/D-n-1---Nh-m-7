@@ -3,14 +3,11 @@ include 'header.html';
 include 'slider.html';
 include_once "database.php";
 
-// Lấy tháng và năm từ yêu cầu (nếu có)
 $month = isset($_GET['month']) ? $_GET['month'] : date('m');
 $year = isset($_GET['year']) ? $_GET['year'] : date('Y');
 
-// Kết nối đến cơ sở dữ liệu
 $db = Database::getInstance(); 
 
-// Truy vấn lấy dữ liệu từ bảng tbl_payment_detail cho đơn hàng trong tháng và năm chọn
 $query = "SELECT pd.order_id, pd.product_id, pd.product_price , pd.product_img, pd.status, pd.created_at, 
                  p.payment_method, p.delivery_method, u.username AS user_name 
           FROM tbl_payment_detail pd
@@ -18,7 +15,8 @@ $query = "SELECT pd.order_id, pd.product_id, pd.product_price , pd.product_img, 
           JOIN tbl_user u ON p.user_id = u.id
           WHERE MONTH(pd.created_at) = '$month' 
           AND YEAR(pd.created_at) = '$year'
-          AND (pd.status = 'Đã giao' OR pd.status = 'Đã huỷ')";  // Lọc chỉ những đơn hàng có trạng thái Đã giao hoặc Đã huỷ
+          AND (pd.status = 'Đã giao' OR pd.status = 'Đã huỷ')
+          ORDER BY pd.created_at DESC"; 
 
 $result = $db->select($query);
 ?>
@@ -123,12 +121,11 @@ $result = $db->select($query);
                         echo "<tr>";
                         echo "<td>" . $row['order_id'] . "</td>";
                         echo "<td>" . $row['user_name'] . "</td>";
-                        echo "<td><img src='../view/image" . $row['product_img'] . "' alt='Ảnh Sản Phẩm' width='100'></td>";
+                        echo "<td><img src='/Duan1/view/" . $row['product_img'] . "' alt='Ảnh Sản Phẩm' width='100'></td>";
                         echo "<td>" . number_format($row['product_price']) . " VND</td>";
                         echo "<td>" . $row['payment_method'] . "</td>";
                         echo "<td>" . $row['delivery_method'] . "</td>";
-                        
-                        // Kiểm tra trạng thái và hiển thị màu sắc tương ứng
+
                         if ($row['status'] == 'Đã huỷ') {
                             echo "<td><span style='color: red;'>Đã huỷ</span></td>";
                         } else {

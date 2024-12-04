@@ -11,7 +11,6 @@
     <?php include('header.php'); ?>
 
     <main class="about-us">
-        <!-- Hero Section with Background Image -->
         <section class="hero">
             <div class="hero-content">
                 <h1>Về Chúng Tôi</h1>
@@ -19,7 +18,6 @@
             </div>
         </section>
 
-        <!-- About Content with Image on the Left -->
         <section class="about-content">
             <div class="intro">
                 <h2>Chúng tôi là ai?</h2>
@@ -51,7 +49,6 @@
             </div>
         </section>
 
-        <!-- History Section with Image -->
         <section class="our-history">
             <h2>Lịch sử hình thành</h2>
             <div class="history-content">
