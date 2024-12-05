@@ -22,21 +22,26 @@
                     <li><a href="cartegorylist.php">Danh Sách Loại Sản Phẩm</a></li>
                 </ul>
             </li>
-            <li><h2>Sản phẩm</h2>
+            <li><h2>Sản Phẩm</h2>
                 <ul>
-                    <li><a href="">Thêm sản phẩm</a></li>
+                    <li><a href="productadd.php">Thêm sản phẩm</a></li>
                     <li><a href="productlist.php">Danh Sách Sản phẩm</a></li>
                 </ul>
             </li>
             <li><h2>Giỏ Hàng</h2>
                 <ul>
-                    <li><a href="">Danh Sách Đặt Hàng</a></li>
-                    <li><a href="">Trạng thái hoàn thành</a></li>
+                    <li><a href="paymentlist.php">Danh Sách Đặt Hàng</a></li>
+                    <li><a href="paymentfinish.php">Trạng thái hoàn thành</a></li>
                 </ul>
             </li>
             <li><h2>Tài Khoản</h2>
                 <ul>
-                    <li><a href="">Quản Lý Tài Khoản</a></li>
+                    <li><a href="user.php">Quản Lý Tài Khoản</a></li>
+                </ul>
+            </li>
+            <li><h2>Thống Kê</h2>
+                <ul>
+                    <li><a href="thongke.php">Thống kê</a></li>
                 </ul>
             </li>
         </ul>
