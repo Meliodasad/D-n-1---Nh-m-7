@@ -83,23 +83,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['status'], $_POST['deta
                         echo "<td>" . $row['product_quantity'] . "</td>";
 
                         echo "<td>";
-if ($row['status'] == 'Đã giao') {
-    echo "<span style='color: green;'>$row[status]</span>";
-} elseif ($row['status'] == 'Đã huỷ') {
-    echo "<span style='color: red;'>$row[status]</span>";
-} else {
-    echo "<form method='POST' style='display:inline;'>";
-    echo "<select name='status' onchange='this.form.submit()'>";
-    $statuses = ['Chờ Xử Lý', 'Đang chuẩn bị', 'Đang giao', 'Đã giao'];
-    foreach ($statuses as $status) {
-        $selected = $row['status'] == $status ? "selected" : "";
-        echo "<option value='$status' $selected>$status</option>";
-    }
-    echo "</select>";
-    echo "<input type='hidden' name='detail_id' value='" . $row['detail_id'] . "'>";
-    echo "</form>";
-}
-echo "</td>";
+                    if ($row['status'] == 'Đã giao') {
+                        echo "<span style='color: green;'>$row[status]</span>";
+                    } elseif ($row['status'] == 'Đã huỷ') {
+                        echo "<span style='color: red;'>$row[status]</span>";
+                    } else {
+                        echo "<form method='POST' style='display:inline;'>";
+                        echo "<select name='status' onchange='this.form.submit()'>";
+                        $statuses = ['Chờ Xử Lý', 'Đang chuẩn bị', 'Đang giao', 'Đã giao'];
+                        foreach ($statuses as $status) {
+                            $selected = $row['status'] == $status ? "selected" : "";
+                            echo "<option value='$status' $selected>$status</option>";
+                        }
+                        echo "</select>";
+                        echo "<input type='hidden' name='detail_id' value='" . $row['detail_id'] . "'>";
+                        echo "</form>";
+                    }
+                    echo "</td>";
 
                         echo "<td>" . $row['created_at'] . "</td>";
                         echo "</tr>";
