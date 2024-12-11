@@ -99,6 +99,12 @@ class Product {
             return false; 
         }
     }
+    public function update_product_status($product_id, $new_status) {
+        $query = "UPDATE tbl_product SET status = ? WHERE product_id = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("si", $new_status, $product_id);
+        return $stmt->execute();
+    }
     
 }
 ?>

@@ -39,7 +39,6 @@ if (isset($_GET['delete_id'])) {
                         <th>Mật Khẩu</th>
                         <th>Emai</th>
                         <th>Số Điện Thoại</th>
-                        <th>Thao tác</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,7 +51,6 @@ if (isset($_GET['delete_id'])) {
                             echo "<td>" . $row['password'] . "</td>";
                             echo "<td>" . $row['email'] . "</td>";
                             echo "<td>" . $row['phone'] . "</td>";
-                            echo "<td><a href='?delete_id=" . $row['id'] . "' onclick='return confirm(\"Bạn có chắc muốn xóa tài khoản này không?\")'>Xóa</a></td>";
                             echo "</tr>";
                         }
                     } else {
