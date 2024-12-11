@@ -108,7 +108,7 @@ if (isset($_POST['cancel_detail_id'])) {
                 <th>Số Lượng</th>
                 <th>Trạng Thái</th>
                 <th>Ngày Đặt Hàng</th>
-                <th>Huỷ Sản Phẩm</th>
+                <th>Trạng Thái Sản Phẩm</th>
             </tr>
         </thead>
         <tbody>
